@@ -1,26 +1,31 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* رنگ اصلی و برند */
+  --primary: #5c6ac4; /* بنفش تیره مدرن */
+  --accent: #7f5af0; /* بنفش روشن و جذاب برای تاکید */
+
+  /* رنگ‌های پس‌زمینه */
+  --secondary: #f0f0ff; /* خیلی روشن، ملایم و مدرن */
+  --light: #ffffff; /* سفید خالص برای فضای باز */
+  --background: #f8f9ff; /* زمینه اصلی سایت */
+
+  /* رنگ متن و محتوا */
+  --foreground: #1f1f3a; /* خاکستری تیره، قابل خواندن */
+  --text-muted: #6b6b8c; /* متن فرعی / توضیحات */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html {
+  font-family: "Vazir", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }

@@ -1,0 +1,90 @@
+export const examInit = [
+  {
+    id: "1",
+    exam: { title: "آزمون ریاضی" },
+    score: 85.5,
+    started_at: "2025-09-26T10:00:00",
+    finished_at: "2025-09-26T11:00:00",
+    is_finished: true,
+    answered_data: {
+      answered_list: {
+        1: { selected_option: "A", correct_option: "A", is_correct: true },
+        2: { selected_option: "B", correct_option: "C", is_correct: false },
+      },
+    },
+  },
+  {
+    id: "2",
+    exam: { title: "آزمون فیزیک" },
+    score: 60.0,
+    started_at: "2025-09-27T12:00:00",
+    finished_at: null,
+    is_finished: false,
+    answered_data: {
+      answered_list: {
+        1: { selected_option: "C", correct_option: "C", is_correct: true },
+      },
+    },
+  },
+];
+
+export const menuItemsList = [
+  {
+    name: "میزکار",
+    url: "/dashboard",
+    icon: <FaHome />,
+    have_child: false,
+  },
+  {
+    name: "دوره‌ها",
+    url: "#",
+    icon: <FaBookOpen />,
+    have_child: true,
+    children: [
+      {
+        name: "دوره‌های من",
+        url: "/dashboard/courses/my",
+        icon: <FaBook />,
+        have_child: false,
+      },
+      {
+        name: "همه‌ی دوره‌ها",
+        url: "/dashboard/courses/all",
+        icon: <FaListAlt />,
+        have_child: false,
+      },
+    ],
+  },
+  {
+    name: "آزمون‌ها",
+    url: "/dashboard/exam/all-exam",
+    icon: <FaClipboardList />,
+    have_child: false,
+    children: [
+      {
+        name: "همه‌ی آزمون‌ها",
+        url: "/dashboard/exam/all-exam",
+        icon: <FaClipboard />,
+        have_child: false,
+      },
+      // {
+      //     name: 'نتایج آزمون‌های من',
+      //     url: '/dashboard/exam/results',
+      //     icon: <FaCheckCircle />,
+      //     have_child: false,
+      // },
+    ],
+  },
+  {
+    name: "جزوه‌ها و دست‌نویس‌ها",
+    url: "/dashboard/notes",
+    icon: <FaPenFancy />,
+    have_child: false,
+  },
+  {
+    name: "امور مالی",
+    url: "/dashboard/finance",
+    icon: <FaMoneyBillWave />,
+    have_child: false,
+  },
+];
