@@ -1,3 +1,4 @@
+import { vazir } from "@/shared/components/fonts/fonts";
 import "./globals.css";
 
 export const metadata = {
