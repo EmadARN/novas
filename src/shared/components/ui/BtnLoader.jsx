@@ -1,7 +1,8 @@
 import React from "react";
+import { DotLoader } from "react-spinners";
 
 const BtnLoader = () => {
-  return <div>BtnLoader</div>;
+  return <DotLoader />;
 };
 
 export default BtnLoader;
