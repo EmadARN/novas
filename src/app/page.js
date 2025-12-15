@@ -1,3 +1,4 @@
+import WhyNovaBest from "@/features/core/components/WhyNovaBest";
 import GradientButton from "@/shared/components/ui/Button";
 import CardItem from "@/shared/components/ui/Cards";
 import React from "react";
@@ -31,6 +32,7 @@ const page = () => {
           <CardItem key={index} {...card} />
         ))}
       </section>
+      <WhyNovaBest />
     </div>
   );
 };
