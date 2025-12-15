@@ -23,3 +23,10 @@ body {
   background-color: var(--background);
   color: var(--foreground);
 }
+
+.card-hover-info {
+  pointer-events: none;
+}
+.card:hover .card__img--hover {
+  height: 100%;
+}
