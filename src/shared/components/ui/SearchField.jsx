@@ -10,7 +10,7 @@ export default function SearchBox({
   placeholder = "جستجو...",
 }) {
   return (
-    <div className="relative max-w-lg mx-auto">
+    <div className="relative w-1/3  mx-auto">
       <div className="relative bg-gradient-to-r from-purple-50/95 via-white/90 to-blue-50/95 backdrop-blur-xl border border-purple-200/70 rounded-3xl shadow-lg overflow-hidden">
         <input
           value={value}
@@ -28,8 +28,6 @@ export default function SearchBox({
         >
           <Search className="w-5 h-5 cursor-pointer" />
         </button>
-
-
       </div>
     </div>
   );
