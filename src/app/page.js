@@ -7,6 +7,7 @@ import InfoBox from "@/shared/components/ui/InfoBox";
 import SectionTitle from "@/shared/components/ui/Tiltes";
 import React from "react";
 import { BookOpen } from "lucide-react";
+import ReadyToLearn from "@/features/core/components/StartLearnignCourses";
 const cardsData = [
   {
     image: "/images/team/sina.jpg",
@@ -37,27 +38,44 @@ const cardsFromServer = [
 const paragraphFromServer = "متن نمونه پاراگراف که از سرور می‌آید.";
 const page = () => {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100 p-4">
-      <GradientButton href="/about" title="Go to About Page" />
-      <section className="flex flex-col sm:flex-row w-full max-w-[820px] justify-center gap-6">
-        {cardsData.map((card, index) => (
-          <CardItem key={index} {...card} />
-        ))}
-      </section>
+    <>
+      <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100 p-4">
+        <GradientButton href="/about" title="Go to About Page" />
+        <section className="flex flex-col sm:flex-row w-full max-w-[820px] justify-center gap-6">
+          {cardsData.map((card, index) => (
+            <CardItem key={index} {...card} />
+          ))}
+        </section>
 
-      <WhyNovaBest />
-      <div className="w-full">
-        <SectionTitle title="مشاورین آکادمی نوا" />
-        <Advisors />
+        <WhyNovaBest />
+        <div className="w-full">
+          <SectionTitle title="مشاورین آکادمی نوا" />
+          <Advisors />
+        </div>
+
+        <InfoBox
+          count={2}
+          icon={<BookOpen size={"20px"} />}
+          color1={"red"}
+          color2={"red"}
+          title="دوره فعال"
+          titleColor={"green"}
+        />
+        <InfoBox
+          count={2}
+          icon={<BookOpen size={"20px"} />}
+          color1={"red"}
+          color2={"red"}
+          title="دوره فعال"
+          titleColor={"green"}
+        />
+        <ExpandableCards
+          cards={cardsFromServer}
+          paragraphText={paragraphFromServer}
+        />
       </div>
-
-      <InfoBox count={2}  icon={<BookOpen size={"20px"} />} color1={"red"}  color2={"red"} title="دوره فعال" titleColor={"green"}/>
-      <InfoBox count={2}  icon={<BookOpen size={"20px"} />} color1={"red"}  color2={"red"} title="دوره فعال" titleColor={"green"}/>
-      <ExpandableCards
-        cards={cardsFromServer}
-        paragraphText={paragraphFromServer}
-      />
-    </div>
+      <ReadyToLearn />
+    </>
   );
 };
 
