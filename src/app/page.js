@@ -1,3 +1,6 @@
+"use client";
+
+import React from "react";
 import Advisors from "@/features/core/components/Advisors";
 import ExpandableCards from "@/features/core/components/Faqs";
 import WhyNovaBest from "@/features/core/components/WhyNovaBest";
@@ -5,9 +8,9 @@ import GradientButton from "@/shared/components/ui/Button";
 import CardItem from "@/shared/components/ui/Cards";
 import InfoBox from "@/shared/components/ui/InfoBox";
 import SectionTitle from "@/shared/components/ui/Tiltes";
-import React from "react";
-import { BookOpen } from "lucide-react";
 import ReadyToLearn from "@/features/core/components/StartLearnignCourses";
+import { BookOpen } from "lucide-react";
+
 const cardsData = [
   {
     image: "/images/team/sina.jpg",
@@ -28,6 +31,7 @@ const cardsData = [
     href: "#",
   },
 ];
+
 const cardsFromServer = [
   { title: "1. پاراگراف", color: "bg-[#1abc9c]" },
   { title: "2. پاراگراف", color: "bg-[#3498db]" },
@@ -36,23 +40,34 @@ const cardsFromServer = [
 ];
 
 const paragraphFromServer = "متن نمونه پاراگراف که از سرور می‌آید.";
-const page = () => {
+
+const Page = () => {
   return (
-    <>
-      <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100 p-4">
-        <GradientButton href="/about" title="Go to About Page" />
-        <section className="flex flex-col sm:flex-row w-full max-w-[820px] justify-center gap-6">
-          {cardsData.map((card, index) => (
-            <CardItem key={index} {...card} />
-          ))}
-        </section>
+    <div
+      className="flex min-h-screen flex-col items-center justify-center p-4
+        bg-gradient-to-r from-[var(--secondary)] to-[var(--secondary)]"
+    >
+      {/* دکمه */}
+      <GradientButton href="/about" title="Go to About Page" />
 
-        <WhyNovaBest />
-        <div className="w-full">
-          <SectionTitle title="مشاورین آکادمی نوا" />
-          <Advisors />
-        </div>
+      {/* کارت‌ها */}
+      <section className="flex flex-col sm:flex-row w-full max-w-[820px] justify-center gap-6 my-6">
+        {cardsData.map((card, index) => (
+          <CardItem key={index} {...card} />
+        ))}
+      </section>
 
+      {/* چرا نُوا بهترین است */}
+      <WhyNovaBest />
+
+      {/* مشاورین */}
+      <div className="w-full my-6">
+        <SectionTitle title="مشاورین آکادمی نوا" />
+        <Advisors />
+      </div>
+
+      {/* InfoBox ها */}
+      <div className="flex flex-wrap gap-4 my-6">
         <InfoBox
           count={2}
           icon={<BookOpen size={"20px"} />}
@@ -68,15 +83,21 @@ const page = () => {
           color2={"red"}
           title="دوره فعال"
           titleColor={"green"}
-        />
-        <ExpandableCards
-          cards={cardsFromServer}
-          paragraphText={paragraphFromServer}
         />
       </div>
-      <ReadyToLearn />
-    </>
+
+      {/* FAQ یا کارت‌های قابل گسترش */}
+      <ExpandableCards
+        cards={cardsFromServer}
+        paragraphText={paragraphFromServer}
+      />
+
+      {/* شروع یادگیری */}
+      <div className="w-full my-6">
+        <ReadyToLearn />
+      </div>
+    </div>
   );
 };
 
-export default page;
+export default Page;

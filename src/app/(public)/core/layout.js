@@ -1,6 +1,6 @@
 ;
 // import HomeHeader from "@/src/components/layout/homeHeader";
-import Footer from "@/shared/components/layout/Footer"; 
+import Footer from "@/shared/components/layout/Footer";
 
 export const metadata = {
   title: "آکادمی نُوا",
