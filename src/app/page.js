@@ -29,11 +29,12 @@ const page = () => {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100 p-4">
       <GradientButton href="/about" title="Go to About Page" />
-      <section className="flex w-full max-w-[820px] justify-center gap-6">
+      <section className="flex flex-col sm:flex-row w-full max-w-[820px] justify-center gap-6">
         {cardsData.map((card, index) => (
           <CardItem key={index} {...card} />
         ))}
       </section>
+
       <WhyNovaBest />
       <div className="w-full">
         <SectionTitle title="مشاورین آکادمی نوا" />

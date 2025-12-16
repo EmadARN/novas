@@ -13,7 +13,7 @@ export default function CardItem({
   author,
 }) {
   return (
-    <article className="group relative flex w-1/3 flex-col overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-2xl">
+    <article className="group relative flex w-full sm:w-1/3 flex-col overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-2xl">
       {/* badge */}
       {badge && (
         <span className="absolute right-3 top-3 z-[3] rounded-full bg-indigo-600 px-3 py-1 text-xs font-semibold text-white shadow-md">
