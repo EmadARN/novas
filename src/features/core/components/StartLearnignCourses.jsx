@@ -1,5 +1,5 @@
 import React from "react";
-import { GraduationCap } from "lucide-react";
+import { Award, GraduationCap } from "lucide-react";
 
 const ReadyToLearn = () => {
   return (
@@ -7,8 +7,9 @@ const ReadyToLearn = () => {
       <div className="flex flex-col items-center gap-6 text-center max-w-xl px-4">
         {/* Title */}
         <h2 className="flex items-center gap-2 text-2xl md:text-3xl font-bold text-blue-600">
+           <Award className="w-8 h-8 text-yellow-500" />
           آماده یادگیری هستی؟
-          <span className="text-yellow-400">🏅</span>
+         
         </h2>
 
         {/* Description */}
