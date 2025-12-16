@@ -2,6 +2,7 @@ import Advisors from "@/features/core/components/Advisors";
 import WhyNovaBest from "@/features/core/components/WhyNovaBest";
 import GradientButton from "@/shared/components/ui/Button";
 import CardItem from "@/shared/components/ui/Cards";
+import SectionTitle from "@/shared/components/ui/Tiltes";
 import React from "react";
 
 const cardsData = [
@@ -34,7 +35,10 @@ const page = () => {
         ))}
       </section>
       <WhyNovaBest />
-      <Advisors/>
+      <div className="w-full">
+        <SectionTitle title="مشاورین آکادمی نوا" />
+        <Advisors />
+      </div>
     </div>
   );
 };
