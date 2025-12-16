@@ -8,9 +8,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="fa" className={vazir.className}>
+    <html lang="fa" dir="rtl" className={vazir.className}>
       <body>{children}</body>
     </html>
   );
 }
-

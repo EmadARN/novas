@@ -11,6 +11,10 @@ const nextConfig = {
         hostname: "nova-back.runflare.run", //  فقط دامنه
         pathname: "/**", // همه مسیرها
       },
+      {
+        protocol: "https",
+        hostname: "images.pexels.com",
+      },
     ],
   },
 };
