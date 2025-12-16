@@ -1,4 +1,5 @@
 import Advisors from "@/features/core/components/Advisors";
+import ExpandableCards from "@/features/core/components/Faqs";
 import WhyNovaBest from "@/features/core/components/WhyNovaBest";
 import GradientButton from "@/shared/components/ui/Button";
 import CardItem from "@/shared/components/ui/Cards";
@@ -25,6 +26,14 @@ const cardsData = [
     href: "#",
   },
 ];
+const cardsFromServer = [
+  { title: "1. پاراگراف", color: "bg-[#1abc9c]" },
+  { title: "2. پاراگراف", color: "bg-[#3498db]" },
+  { title: "3. پاراگراف", color: "bg-[#e74c3c]" },
+  { title: "4. پاراگراف", color: "bg-[#e67e22]" },
+];
+
+const paragraphFromServer = "متن نمونه پاراگراف که از سرور می‌آید.";
 const page = () => {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100 p-4">
@@ -40,6 +49,10 @@ const page = () => {
         <SectionTitle title="مشاورین آکادمی نوا" />
         <Advisors />
       </div>
+      <ExpandableCards
+        cards={cardsFromServer}
+        paragraphText={paragraphFromServer}
+      />
     </div>
   );
 };
