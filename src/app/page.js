@@ -1,3 +1,4 @@
+import Advisors from "@/features/core/components/Advisors";
 import WhyNovaBest from "@/features/core/components/WhyNovaBest";
 import GradientButton from "@/shared/components/ui/Button";
 import CardItem from "@/shared/components/ui/Cards";
@@ -33,6 +34,7 @@ const page = () => {
         ))}
       </section>
       <WhyNovaBest />
+      <Advisors/>
     </div>
   );
 };
