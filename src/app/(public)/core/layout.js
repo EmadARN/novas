@@ -1,4 +1,4 @@
-import "../globals.css";
+;
 // import HomeHeader from "@/src/components/layout/homeHeader";
 import Footer from "@/shared/components/layout/Footer";
 
