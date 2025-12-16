@@ -2,19 +2,37 @@ import React from "react";
 
 const InfoBox = ({ color1, color2, titleColor, count, icon, title }) => {
   return (
-    <div className="bg-white/60 rounded-2xl shadow-lg p-2 drop-shadow-2xl">
-      <div className="flex justify-center items-center  flex-col gap-4">
-        <div className="flex gap-4 items-center">
-          <span style={{ color:  color1  }} className="text-sm">
+    <div className="bg-white/60 rounded-2xl shadow-lg p-2 drop-shadow-2xl w-32 ">
+      <div className="flex flex-col items-center gap-4">
+        
+        {/* Icon + Count */}
+        <div className="flex items-center gap-3">
+          
+          {/* Icon wrapper */}
+          <span
+            className="flex items-center justify-center"
+            style={{ color: color1 }}
+          >
             {icon}
           </span>
-          <span style={{ color:  color2  }} className="text-md">
+
+          {/* Count */}
+          <span
+            className="text-lg font-semibold leading-none"
+            style={{ color: color2 }}
+          >
             {count}
           </span>
         </div>
-        <span style={{ color:  titleColor  }} className="text-sm">
+
+        {/* Title */}
+        <span
+          className="text-sm text-center"
+          style={{ color: titleColor }}
+        >
           {title}
         </span>
+
       </div>
     </div>
   );
