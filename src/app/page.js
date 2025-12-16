@@ -2,9 +2,10 @@ import Advisors from "@/features/core/components/Advisors";
 import WhyNovaBest from "@/features/core/components/WhyNovaBest";
 import GradientButton from "@/shared/components/ui/Button";
 import CardItem from "@/shared/components/ui/Cards";
+import InfoBox from "@/shared/components/ui/InfoBox";
 import SectionTitle from "@/shared/components/ui/Tiltes";
 import React from "react";
-
+import { BookOpen } from "lucide-react";
 const cardsData = [
   {
     image: "/images/team/sina.jpg",
@@ -40,6 +41,9 @@ const page = () => {
         <SectionTitle title="مشاورین آکادمی نوا" />
         <Advisors />
       </div>
+
+      <InfoBox count={2}  icon={<BookOpen size={"20px"} />} color1={"red"}  color2={"red"} title="دوره فعال" titleColor={"green"}/>
+      <InfoBox count={2}  icon={<BookOpen size={"20px"} />} color1={"red"}  color2={"red"} title="دوره فعال" titleColor={"green"}/>
     </div>
   );
 };
