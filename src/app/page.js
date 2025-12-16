@@ -10,6 +10,7 @@ import InfoBox from "@/shared/components/ui/InfoBox";
 import SectionTitle from "@/shared/components/ui/Tiltes";
 import ReadyToLearn from "@/features/core/components/StartLearnignCourses";
 import { BookOpen } from "lucide-react";
+import SkewedInfiniteScroll from "@/features/core/components/SkewedInfiniteScroll";
 
 const cardsData = [
   {
@@ -44,7 +45,7 @@ const paragraphFromServer = "متن نمونه پاراگراف که از سرو
 const Page = () => {
   return (
     <div
-      className="flex min-h-screen flex-col items-center justify-center p-4
+      className="flex min-h-screen flex-col items-center justify-center 
         bg-gradient-to-r from-[var(--secondary)] to-[var(--secondary)]"
     >
       {/* دکمه */}
@@ -96,6 +97,7 @@ const Page = () => {
       <div className="w-full my-6">
         <ReadyToLearn />
       </div>
+      <SkewedInfiniteScroll/>
     </div>
   );
 };
