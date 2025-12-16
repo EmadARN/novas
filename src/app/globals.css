@@ -2,8 +2,8 @@
 
 :root {
   /* رنگ اصلی و برند */
-  --primary: rgb(172, 145, 212); /* بنفش تیره مدرن */
-  --accent: #5C52C7; /* بنفش روشن و جذاب برای تاکید */
+  --primary: #6162c7; /* بنفش تیره مدرن */
+  --accent: #992dc4; /* بنفش روشن و جذاب برای تاکید */
 
   /* رنگ‌های پس‌زمینه */
   --secondary: #ebeaed; /* خیلی روشن، ملایم و مدرن */
@@ -20,7 +20,7 @@ html {
 }
 
 body {
-  background-color: var(--primary);
+  background-image: linear-gradient(90deg, var(--accent), var(--primary));
   color: var(--foreground);
 }
 
