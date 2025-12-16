@@ -36,7 +36,11 @@ const cardsFromServer = [
 const paragraphFromServer = "متن نمونه پاراگراف که از سرور می‌آید.";
 const page = () => {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100 p-4">
+    <div
+      className="flex min-h-screen flex-col items-center justify-center   p-4      bg-gradient-to-r
+        from-[var(--secondary)]
+        to-[var(--secondary)]"
+    >
       <GradientButton href="/about" title="Go to About Page" />
       <section className="flex flex-col sm:flex-row w-full max-w-[820px] justify-center gap-6">
         {cardsData.map((card, index) => (
