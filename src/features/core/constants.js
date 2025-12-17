@@ -24,3 +24,24 @@ export const features = [
     image: "/home/features/feature4.png",
   },
 ];
+
+export const cardsData = [
+  {
+    image: "/images/team/sina.jpg",
+    badge: "New",
+    subtitle: "Recipe",
+    title: "Crisp Spanish tortilla Matzo brei",
+    description: "A modern twist on a classic Spanish dish.",
+    author: "Celeste Mills",
+    href: "#",
+  },
+  {
+    image: "/images/team/sina.jpg",
+    badge: "Popular",
+    subtitle: "Travel",
+    title: "Discover the sea",
+    description: "Explore the most beautiful coasts in the world.",
+    author: "John Doe",
+    href: "#",
+  },
+];

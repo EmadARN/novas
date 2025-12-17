@@ -20,7 +20,6 @@ export default function SectionTitle({ title, subtitle, align = "center" }) {
           text-2xl
           sm:text-3xl
           md:text-4xl
-          lg:text-5xl
           leading-tight
           text-center
         "

@@ -10,8 +10,18 @@ const SkewedInfiniteScroll = () => {
   }));
 
   return (
-    <div className="w-full py-10">
-      <div className="flex items-center justify-center">
+    <div className="w-full ">
+      <div className="max-w-2xl mx-auto text-center">
+        <h2>
+          نُوا دنیایی گسترده از آموزش و یادگیری را ارائه می‌دهد؛ از کلاس‌های
+          آنلاین و آفلاین گرفته تا برنامه‌ریزی تحصیلی دقیق و هدفمند. با مسیرها و
+          محتوای اختصاصی، راه موفقیت دانش‌آموزان، به ویژه علاقه‌مندان به کنکور
+          فرهنگیان، روشن و هموار می‌شود. تیم اساتید مجرب و پرشور، با سال‌ها
+          تجربه در آموزش و مشاوره کنکور، همراه دانش‌آموزان است تا بالاترین
+          توانایی‌ها شکوفا شو
+        </h2>
+      </div>
+      <div className="flex items-center justify-center py-10">
         <div className="fog-wrapper relative w-full overflow-hidden px-4">
           <div className="fog-top" />
           <div className="fog-bottom" />
@@ -79,9 +89,8 @@ const SkewedInfiniteScroll = () => {
                 translateY(-100%);
             }
           }
-        }5
-
-        .fog-top,
+        }
+        5 .fog-top,
         .fog-bottom {
           pointer-events: none;
           position: absolute;
