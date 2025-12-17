@@ -68,7 +68,7 @@ export default function Navbar() {
           isScrolled ? "text-gray-700" : "text-white"
         }`}
       >
-        <Link href="/home" className="hover:underline">
+        <Link href="/" className="hover:underline">
           خانه
         </Link>
         <Link href="#portfolio" className="hover:underline">

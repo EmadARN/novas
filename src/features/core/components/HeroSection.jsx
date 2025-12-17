@@ -1,32 +1,12 @@
 "use client";
-import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function HeroSection() {
-  const { scrollYProgress } = useScroll();
-  const scale = useTransform(scrollYProgress, [0, 0.1], [1, 0.95]);
-  const borderRadius = useTransform(
-    scrollYProgress,
-    [0, 0.2],
-    ["0rem", "2rem"]
-  );
-  const boxShadow = useTransform(
-    scrollYProgress,
-    [0, 0.2],
-    [
-      "0 24px 43px rgba(0,0,0,0.2), 0 20px 17px rgba(0,0,0,0.2)",
-      "0 0px 0px rgba(0,0,0,0.3), 0 0px 0px rgba(0,0,0,0.16)",
-    ]
-  );
-
   return (
-    <motion.main
-      className="w-full relative overflow-hidden px-4 sm:px-8 md:px-16 min-h-[90vh] md:min-h-[80vh] text-white"
+    <div
+      className="w-full relative overflow-hidden px-4 sm:px-8 md:px-16 min-h-[90vh] md:min-h-[80vh] text-white rounded-b-xl "
       style={{
         background:
           "linear-gradient(to bottom right, var(--primary), var(--accent))",
-        scale: scale,
-        borderRadius: borderRadius,
-        boxShadow: boxShadow,
       }}
     >
       {/* محتوای اصلی */}
@@ -76,6 +56,6 @@ export default function HeroSection() {
           }
         }
       `}</style>
-    </motion.main>
+    </div>
   );
 }

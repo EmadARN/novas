@@ -5,6 +5,7 @@ import CardItem from "@/shared/components/ui/Cards";
 import SectionTitle from "@/shared/components/ui/Tiltes";
 import HeroSection from "@/features/core/components/HeroSection";
 import { cardsData } from "@/features/core/constants";
+import ScrollShrinkWrapper from "@/shared/provider/ScrollShrinkWrapper";
 
 const cardsFromServer = [
   { title: "1. پاراگراف", color: "bg-[#1abc9c]" },
@@ -23,7 +24,11 @@ const Page = async () => {
       className="flex min-h-screen flex-col items-center justify-center 
         bg-gradient-to-r from-[var(--secondary)] to-[var(--secondary)] rounded-b-xl"
     >
-      <HeroSection />
+      <div className="w-full">
+        <ScrollShrinkWrapper>
+          <HeroSection />
+        </ScrollShrinkWrapper>
+      </div>
 
       {/* چرا نُوا بهترین است */}
       <div className="w-full mt-16">
