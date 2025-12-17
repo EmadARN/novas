@@ -3,7 +3,7 @@
 export default function HeroSection() {
   return (
     <div
-      className="w-full relative overflow-hidden px-4 sm:px-8 md:px-16 min-h-[90vh] md:min-h-[80vh] text-white rounded-b-xl "
+      className="w-full relative overflow-hidden px-4 sm:px-8 md:px-16 min-h-[55vh] md:min-h-[80vh] lg:min-h-[50vh] xl:min-h-[80vh] text-white rounded-b-xl "
       style={{
         background:
           "linear-gradient(to bottom right, var(--primary), var(--accent))",
@@ -37,11 +37,15 @@ export default function HeroSection() {
 
       {/* موج‌ها */}
       <div
-        className="absolute left-[30%] bottom-[-4%] md:left-[-5%] md:bottom-[-55%] w-[215px] h-[215px] md:w-[800px] md:h-[800px] border-[2px] border-violet-500 border-opacity-10 rounded-[40%]"
+        className="hidden md:block absolute left-[30%] bottom-[-4%] md:left-[-5%] lg:left-[7%] xl:left-[-5%] md:bottom-[-55%] w-[215px] h-[215px] md:w-[800px] md:h-[800px] border-[2px] border-violet-500 border-opacity-10 rounded-[40%]"
         style={{ animation: "spin 20s linear infinite" }}
       ></div>
       <div
-        className="absolute left-[16%] bottom-[-6%] md:left-[-5%] md:bottom-[-55%] w-[250px] h-[250px] md:w-[700px] md:h-[700px] border-[2px] border-violet-500 border-opacity-20 rounded-[40%]"
+        className="hidden md:block absolute left-[16%] bottom-[-6%] md:left-[-5%] lg:left-[7%] xl:left-[-5%] md:bottom-[-55%] w-[250px] h-[250px] md:w-[700px] md:h-[700px] border-[2px] border-violet-500 border-opacity-20 rounded-[40%]"
+        style={{ animation: "spin 17s linear infinite" }}
+      ></div>
+      <div
+        className="hidden md:block absolute left-[16%] bottom-[-6%] md:left-[-5%] lg:left-[7%] xl:left-[-5%] md:bottom-[-55%] w-[260px] h-[260px] md:w-[600px] md:h-[600px] border-[2px] border-violet-500 border-opacity-20 rounded-[40%]"
         style={{ animation: "spin 17s linear infinite" }}
       ></div>
 
