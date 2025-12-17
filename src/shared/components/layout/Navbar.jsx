@@ -80,7 +80,7 @@ export default function Navbar() {
         <Link href="#contact" className="hover:underline">
           تماس با ما
         </Link>
-        <Link href="#success" className="hover:underline">
+        <Link href="/students" className="hover:underline">
           قبولی ها
         </Link>
       </div>
