@@ -1,10 +1,7 @@
-"use client";
-
 import React from "react";
 import Advisors from "@/features/core/components/Advisors";
 import ExpandableCards from "@/features/core/components/Faqs";
 import WhyNovaBest from "@/features/core/components/WhyNovaBest";
-import GradientButton from "@/shared/components/ui/Button";
 import CardItem from "@/shared/components/ui/Cards";
 import InfoBox from "@/shared/components/ui/InfoBox";
 import SectionTitle from "@/shared/components/ui/Tiltes";
@@ -42,15 +39,14 @@ const cardsFromServer = [
 
 const paragraphFromServer = "متن نمونه پاراگراف که از سرور می‌آید.";
 
-const Page = () => {
+const Page = async () => {
+  await new Promise((res) => setTimeout(res, 2000));
+
   return (
     <div
       className="flex min-h-screen flex-col items-center justify-center 
         bg-gradient-to-r from-[var(--secondary)] to-[var(--secondary)]"
     >
-      {/* دکمه */}
-      <GradientButton href="/about" title="Go to About Page" />
-
       {/* کارت‌ها */}
       <section className="flex flex-col sm:flex-row w-full max-w-[820px] justify-center gap-6 my-6">
         {cardsData.map((card, index) => (
@@ -97,7 +93,7 @@ const Page = () => {
       <div className="w-full my-6">
         <ReadyToLearn />
       </div>
-      <SkewedInfiniteScroll/>
+      <SkewedInfiniteScroll />
     </div>
   );
 };
