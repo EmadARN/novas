@@ -8,6 +8,7 @@ import SectionTitle from "@/shared/components/ui/Tiltes";
 import ReadyToLearn from "@/features/core/components/StartLearnignCourses";
 import { BookOpen } from "lucide-react";
 import SkewedInfiniteScroll from "@/features/core/components/SkewedInfiniteScroll";
+import HeroSection from "@/features/core/components/HeroSection";
 
 const cardsData = [
   {
@@ -45,8 +46,9 @@ const Page = async () => {
   return (
     <div
       className="flex min-h-screen flex-col items-center justify-center 
-        bg-gradient-to-r from-[var(--secondary)] to-[var(--secondary)]"
+        bg-gradient-to-r from-[var(--secondary)] to-[var(--secondary)] rounded-xl"
     >
+      <HeroSection />
       {/* کارت‌ها */}
       <section className="flex flex-col sm:flex-row w-full max-w-[820px] justify-center gap-6 my-6">
         {cardsData.map((card, index) => (
@@ -55,8 +57,11 @@ const Page = async () => {
       </section>
 
       {/* چرا نُوا بهترین است */}
-      <WhyNovaBest />
-
+      <div className="w-full my-6">
+        <SectionTitle title="چرا نُوا بهترین انتخاب است؟" />
+        <WhyNovaBest />{" "}
+      </div>
+      
       {/* مشاورین */}
       <div className="w-full my-6">
         <SectionTitle title="مشاورین آکادمی نوا" />

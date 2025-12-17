@@ -1,6 +1,6 @@
-;
 // import HomeHeader from "@/src/components/layout/homeHeader";
 import Footer from "@/shared/components/layout/Footer";
+import Navbar from "@/shared/components/layout/Navbar";
 
 export const metadata = {
   title: "آکادمی نُوا",
@@ -21,10 +21,9 @@ export default function PublicpagesLayout({ children }) {
             paddingTop: "4.5%",
           }}
         >
-          {/* <HomeHeader /> */}
-
+          {/* <Navbar /> */}
           {children}
-          <Footer />
+          {/* <Footer /> */}
         </main>
       </body>
     </html>

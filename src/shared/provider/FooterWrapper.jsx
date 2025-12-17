@@ -20,7 +20,7 @@ export default function FooterWrapper({ children }) {
   return (
     <div
       className={`transition-all duration-500 shadow-xl ${
-        tight ? "scale-[0.97]" : "scale-100"
+        tight ? "scale-[0.98]" : "scale-100"
       }`}
       style={{ transformOrigin: "top center" }}
     >
