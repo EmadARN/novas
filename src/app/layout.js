@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
       <body>
         <FooterWrapper>{children}</FooterWrapper>
         <Footer />
-      </body>{" "}
+      </body>
     </html>
   );
 }
