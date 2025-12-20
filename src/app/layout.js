@@ -2,6 +2,8 @@ import { vazir } from "@/shared/components/fonts/fonts";
 import "./globals.css";
 import FooterWrapper from "@/shared/provider/FooterWrapper";
 import Footer from "@/shared/components/layout/Footer";
+import LoaderWrapper from "@/shared/provider/LoaderWrapper";
+import Navbar from "@/shared/components/layout/Navbar";
 
 export const metadata = {
   title: "Create Next App",
@@ -12,8 +14,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl" className={vazir.className}>
       <body>
-        <FooterWrapper>{children}</FooterWrapper>
-        <Footer />
+        <LoaderWrapper>
+          <Navbar />
+          <FooterWrapper>{children}</FooterWrapper>
+          <Footer />
+        </LoaderWrapper>
       </body>
     </html>
   );

@@ -7,10 +7,11 @@ export default function GradientButton({ href, title, className = "" }) {
       className={`
         inline-block
         rounded-xl
-        px-8
-        py-4
+        px-4 md:px-8
+        py-2 md:py-4
         font-bold
         text-white
+        text-sm md:text-md
         shadow-lg
         transition-transform
         hover:scale-105
