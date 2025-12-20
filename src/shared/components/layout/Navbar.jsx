@@ -71,13 +71,13 @@ export default function Navbar() {
         <Link href="/" className="hover:underline">
           خانه
         </Link>
-        <Link href="#portfolio" className="hover:underline">
+        <Link href="/courses" className="hover:underline">
           دوره ها
         </Link>
-        <Link href="/about" className="hover:underline">
+        <Link href="/contact" className="hover:underline">
           درباره ما
         </Link>
-        <Link href="#contact" className="hover:underline">
+        <Link href="/contact" className="hover:underline">
           تماس با ما
         </Link>
         <Link href="/students" className="hover:underline">

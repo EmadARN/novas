@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import { motion } from "framer-motion";
 import { ContactButton } from "./ContactBtn";
@@ -14,8 +14,6 @@ const ContactSection = () => {
         className="max-w-4xl mx-auto text-center"
       >
         <SectionTitle title="ارتباط با ما" />
-
-      
 
         <div className="flex flex-row flex-wrap gap-4 justify-center items-center">
           <ContactButton
