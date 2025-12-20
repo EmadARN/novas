@@ -74,7 +74,7 @@ export default function Navbar() {
         <Link href="/courses" className="hover:underline">
           دوره ها
         </Link>
-        <Link href="/contact" className="hover:underline">
+        <Link href="/about" className="hover:underline">
           درباره ما
         </Link>
         <Link href="/contact" className="hover:underline">
