@@ -24,7 +24,8 @@ export default function PublicpagesLayout({ children }) {
           {/* <HomeHeader /> */}
 
           {children}
-          <Footer />
+         
+         
         </main>
       </body>
     </html>
