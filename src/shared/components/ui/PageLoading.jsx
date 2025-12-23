@@ -25,8 +25,8 @@ const PageLoading = () => {
         <motion.div
           key={i}
           className="absolute w-full h-1/5 bg-gradient-to-r
-        from-[var(--primary)]
-        to-[var(--accent)] flex items-center justify-center"
+        from-[var(--accent)]
+        to-[var(--primary)] flex items-center justify-center"
           custom={i}
           variants={rectangleVariants}
           style={{ top: `${i * 20}%` }}

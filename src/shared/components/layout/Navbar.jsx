@@ -86,7 +86,7 @@ export default function Navbar() {
       </div>
 
       <div className="flex flex-1 justify-end">
-        <GradientButton title="ورود / ثبت نام" href="/signup" />
+        <GradientButton title="ورود / ثبت نام" href="/auth" />
       </div>
 
       {/* منوی موبایل */}

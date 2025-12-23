@@ -2688,3 +2688,73 @@ export const cities_all = [
     provinceId: "21",
   },
 ];
+
+
+
+export const provinces = [
+  { value: "", label: "انتخاب استان" },
+  { value: "زنجان", label: "زنجان" },
+  { value: "البرز", label: "البرز" },
+  { value: "اردبیل", label: "اردبیل" },
+  { value: "آذربایجان شرقی", label: "آذربایجان شرقی" },
+  { value: "آذربایجان غربی", label: "آذربایجان غربی" },
+  { value: "بوشهر", label: "بوشهر" },
+  { value: "چهارمحال و بختیاری", label: "چهارمحال و بختیاری" },
+  { value: "فارس", label: "فارس" },
+  { value: "گیلان", label: "گیلان" },
+  { value: "گلستان", label: "گلستان" },
+  { value: "همدان", label: "همدان" },
+  { value: "هرمزگان", label: "هرمزگان" },
+  { value: "ایلام", label: "ایلام" },
+  { value: "اصفهان", label: "اصفهان" },
+  { value: "کرمان", label: "کرمان" },
+  { value: "کرمانشاه", label: "کرمانشاه" },
+  { value: "خراسان شمالی", label: "خراسان شمالی" },
+  { value: "خراسان رضوی", label: "خراسان رضوی" },
+  { value: "خراسان جنوبی", label: "خراسان جنوبی" },
+  { value: "خوزستان", label: "خوزستان" },
+  { value: "کهگیلویه و بویراحمد", label: "کهگیلویه و بویراحمد" },
+  { value: "کردستان", label: "کردستان" },
+  { value: "لرستان", label: "لرستان" },
+  { value: "مرکزی", label: "مرکزی" },
+  { value: "مازندران", label: "مازندران" },
+  { value: "قزوین", label: "قزوین" },
+  { value: "قم", label: "قم" },
+  { value: "سمنان", label: "سمنان" },
+  { value: "سیستان و بلوچستان", label: "سیستان و بلوچستان" },
+  { value: "تهران", label: "تهران" },
+  { value: "یزد", label: "یزد" },
+];
+
+export const fieldOptions = [
+  { value: "", label: "انتخاب رشته" },
+  { value: "تجربی", label: "تجربی" },
+  { value: "انسانی", label: "انسانی" },
+  { value: "ریاضی", label: "ریاضی" },
+  { value: "هنر", label: "هنر" },
+  { value: "فنی", label: "فنی" },
+];
+
+export const schoolTypeOptions = [
+  { value: "", label: "انتخاب نوع مدرسه" },
+  { value: "public", label: "دولتی" },
+  { value: "gifted", label: "تیزهوشان" },
+  { value: "private", label: "غیرانتفاعی" },
+  { value: "other", label: "سایر" },
+];
+
+export const yearOptions = [
+  { value: "", label: "انتخاب پایه" },
+  { value: "ten", label: "دهم" },
+  { value: "eleven", label: "یازدهم" },
+  { value: "twelve", label: "دوازدهم" },
+  { value: "thirteen", label: "پشت کنکور" },
+];
+
+export const genders = [
+  [
+    { value: "", label: "انتخاب جنسیت" },
+    { value: "male", label: "مرد" },
+    { value: "female", label: "زن" },
+  ],
+];
