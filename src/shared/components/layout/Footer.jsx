@@ -2,6 +2,7 @@
 
 import React from "react";
 import { ChevronRight, Instagram, Send } from "lucide-react";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -22,25 +23,25 @@ const Footer = () => {
           <ul className="space-y-2 text-gray-200 text-sm">
             <li className="flex items-center space-x-2 rtl:space-x-reverse">
               <ChevronRight size={16} className="text-gray-50" />
-              <a href="#contact" className="hover:text-white transition">
+              <Link href="/contact" className="hover:text-white transition">
                 ارتباط با ما
-              </a>
+              </Link>
             </li>
             <li className="flex items-center space-x-2 rtl:space-x-reverse">
               <ChevronRight size={16} className="text-gray-50" />
-              <a href="#about" className="hover:text-white transition">
+              <Link href="/about" className="hover:text-white transition">
                 درباره ما
-              </a>
+              </Link>
             </li>
             <li className="flex items-center space-x-2 rtl:space-x-reverse">
               <ChevronRight size={16} className="text-gray-50" />
-              <a href="#success" className="hover:text-white transition">
+              <a href="/students" className="hover:text-white transition">
                 قبولی‌ها
               </a>
             </li>
             <li className="flex items-center space-x-2 rtl:space-x-reverse">
               <ChevronRight size={16} className="text-gray-50" />
-              <a href="#courses" className="hover:text-white transition">
+              <a href="/courses" className="hover:text-white transition">
                 دوره‌ها
               </a>
             </li>

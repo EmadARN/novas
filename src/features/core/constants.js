@@ -25,6 +25,27 @@ export const features = [
   },
 ];
 
+
+// team Section
+
+
+ export  const fakeTeachers = [
+    {
+      full_name: "حسین بیگدلی",
+      about: "موسس و مدیر آکادمی نُوا",
+      image: "/images/team/sina.jpg",
+    },
+    {
+      full_name: "مائده شجاعی",
+      about: "مدیر آکادمی نوا",
+      image: "/images/team/maede.jpg",
+    },
+    {
+      full_name: "آذر کاظمی",
+      about: "مدیر امور مالی و واحد ثبت نام",
+      image: "/images/team/mahsa.jpg",
+    },
+  ];
 export const cardsData = [
   {
     image: "/images/team/sina.jpg",
