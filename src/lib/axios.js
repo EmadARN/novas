@@ -6,7 +6,7 @@ import {
   API_TEXTBOOK_URL,
   API_PAYMENT_URL,
   API_EXAM_URL,
-} from "../../env";
+} from "../config/api.js"
 
 // ایجاد instance axios
 const app = axios.create({
