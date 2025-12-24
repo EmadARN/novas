@@ -1,3 +1,14 @@
+import {
+  Home,
+  BookOpen,
+  Book,
+  List,
+  ClipboardList,
+  Clipboard,
+  PenTool,
+  Wallet,
+} from "lucide-react";
+
 export const examInit = [
   {
     id: "1",
@@ -32,25 +43,25 @@ export const menuItemsList = [
   {
     name: "میزکار",
     url: "/dashboard",
-    icon: <FaHome />,
+    icon: <Home size={20} />,
     have_child: false,
   },
   {
     name: "دوره‌ها",
     url: "#",
-    icon: <FaBookOpen />,
+    icon: <BookOpen size={20} />,
     have_child: true,
     children: [
       {
         name: "دوره‌های من",
         url: "/dashboard/courses/my",
-        icon: <FaBook />,
+        icon: <Book size={18} />,
         have_child: false,
       },
       {
         name: "همه‌ی دوره‌ها",
         url: "/dashboard/courses/all",
-        icon: <FaListAlt />,
+        icon: <List size={18} />,
         have_child: false,
       },
     ],
@@ -58,33 +69,27 @@ export const menuItemsList = [
   {
     name: "آزمون‌ها",
     url: "/dashboard/exam/all-exam",
-    icon: <FaClipboardList />,
+    icon: <ClipboardList size={20} />,
     have_child: false,
     children: [
       {
         name: "همه‌ی آزمون‌ها",
         url: "/dashboard/exam/all-exam",
-        icon: <FaClipboard />,
+        icon: <Clipboard size={18} />,
         have_child: false,
       },
-      // {
-      //     name: 'نتایج آزمون‌های من',
-      //     url: '/dashboard/exam/results',
-      //     icon: <FaCheckCircle />,
-      //     have_child: false,
-      // },
     ],
   },
   {
     name: "جزوه‌ها و دست‌نویس‌ها",
     url: "/dashboard/notes",
-    icon: <FaPenFancy />,
+    icon: <PenTool size={20} />,
     have_child: false,
   },
   {
     name: "امور مالی",
     url: "/dashboard/finance",
-    icon: <FaMoneyBillWave />,
+    icon: <Wallet size={20} />,
     have_child: false,
   },
 ];
