@@ -1,67 +1,46 @@
 import axios from "axios";
-import {
-  BASE_URL,
-  API_CORE_URL,
-  API_PACKAGE_URL,
-  API_TEXTBOOK_URL,
-  API_PAYMENT_URL,
-  API_EXAM_URL,
-} from "../config/api.js"
+import { API_CORE_URL } from "./api";
 
-// ایجاد instance axios
-const app = axios.create({
-  baseURL: BASE_URL,
-  withCredentials: true,
-});
+const createAxiosInstance = (baseURL) => {
+  const instance = axios.create({
+    baseURL,
+    withCredentials: true,
+  });
 
-// اینترسپتور درخواست (Request interceptor)
-app.interceptors.request.use(
-  (config) => config,
-  (err) => Promise.reject(err)
-);
+  // Request
+  instance.interceptors.request.use(
+    (config) => config,
+    (error) => Promise.reject(error)
+  );
 
-// اینترسپتور پاسخ (Response interceptor)
-app.interceptors.response.use(
-  (res) => res,
-  async (err) => {
-    const originalConfig = err.config;
+  // Response
+  instance.interceptors.response.use(
+    (response) => response,
+    async (error) => {
+      const originalConfig = error.config;
 
-    if (err.response && err.response.status === 401 && !originalConfig._retry) {
-      originalConfig._retry = true;
-      try {
-        const { data } = await axios.get(
-          `${BASE_URL}authentication/refresh-token/`,
-          {
+      if (error.response?.status === 401 && !originalConfig?._retry) {
+        originalConfig._retry = true;
+
+        try {
+          await axios.get(`${API_CORE_URL}auth/refresh-token/`, {
             withCredentials: true,
+          });
+
+          return instance(originalConfig);
+        } catch (err) {
+          if (typeof window !== "undefined") {
+            window.location.href = "/login";
           }
-        );
-
-        if (data) {
-          return app(originalConfig);
+          return Promise.reject(err);
         }
-      } catch (error) {
-        return Promise.reject(error);
       }
+
+      return Promise.reject(error);
     }
-    return Promise.reject(err);
-  }
-);
+  );
 
-// خروجی متدهای اصلی axios
-const http = {
-  get: app.get,
-  post: app.post,
-  put: app.put,
-  patch: app.patch,
-  delete: app.delete,
+  return instance;
 };
 
-// خروجی
-export {
-  http,
-  API_CORE_URL,
-  API_PACKAGE_URL,
-  API_TEXTBOOK_URL,
-  API_PAYMENT_URL,
-  API_EXAM_URL,
-};
+export default createAxiosInstance;
