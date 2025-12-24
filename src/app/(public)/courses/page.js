@@ -8,7 +8,7 @@ import CardItem from "@/shared/components/ui/Cards";
 import ReadyToLearn from "@/features/core/components/StartLearnignCourses";
 const page = () => {
   return (
-    <div>
+    <div className=" bg-gradient-to-r from-[var(--secondary)] to-[var(--secondary)] rounded-b-xl">
       <SectionTitle title={"دوره های ما"} />
 
       {/* info boxes */}
