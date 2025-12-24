@@ -1,32 +1,44 @@
+import {
+  Home,
+  Users,
+  GraduationCap,
+  BookOpen,
+  FileText,
+  ClipboardList,
+  Wallet,
+  HelpCircle,
+  MessageCircle,
+} from "lucide-react";
+
 export const menuItemsList = [
   {
     name: "میزکار",
     url: "/admin-dashboard",
-    icon: <FaHome />,
+    icon: <Home size={20} />,
     have_child: false,
   },
   {
     name: "مدیریت کاربران",
     url: "#",
-    icon: <FaUsers />,
+    icon: <Users size={20} />,
     have_child: true,
     children: [
       {
         name: "کاربران",
         url: "/admin-dashboard/users",
-        icon: <FaUsers />,
+        icon: <Users size={18} />,
         have_child: false,
       },
       {
         name: "اطلاعات دانش آموزان",
         url: "/admin-dashboard/student-information",
-        icon: <FaUsers />,
+        icon: <Users size={18} />,
         have_child: false,
       },
       {
         name: "اساتید",
         url: "/admin-dashboard/teacher",
-        icon: <FaChalkboardTeacher />,
+        icon: <GraduationCap size={18} />,
         have_child: false,
       },
     ],
@@ -34,25 +46,25 @@ export const menuItemsList = [
   {
     name: "مدیریت محتوا",
     url: "#",
-    icon: <FaBook />,
+    icon: <BookOpen size={20} />,
     have_child: true,
     children: [
       {
         name: "دوره ها",
         url: "/admin-dashboard/course",
-        icon: <FaBook />,
+        icon: <BookOpen size={18} />,
         have_child: false,
       },
       {
         name: "دسته بندی دوره ها",
         url: "/admin-dashboard/category",
-        icon: <FaBook />,
+        icon: <BookOpen size={18} />,
         have_child: false,
       },
       {
         name: "جزوه ها",
         url: "/admin-dashboard/textbook",
-        icon: <FaFileAlt />,
+        icon: <FileText size={18} />,
         have_child: false,
       },
     ],
@@ -60,19 +72,19 @@ export const menuItemsList = [
   {
     name: "مدیریت آزمون",
     url: "#",
-    icon: <FaClipboardList />,
+    icon: <ClipboardList size={20} />,
     have_child: true,
     children: [
       {
         name: "آزمون",
         url: "/admin-dashboard/exam",
-        icon: <FaClipboardList />,
+        icon: <ClipboardList size={18} />,
         have_child: false,
       },
       {
         name: "نتایج آزمون",
         url: "/admin-dashboard/exam-session",
-        icon: <FaClipboardList />,
+        icon: <ClipboardList size={18} />,
         have_child: false,
       },
     ],
@@ -80,25 +92,25 @@ export const menuItemsList = [
   {
     name: "اشتراک کاربران",
     url: "/admin-dashboard/subscription",
-    icon: <FaMoneyBillWave />,
+    icon: <Wallet size={20} />,
     have_child: false,
   },
   {
     name: "تراکنش های مالی",
     url: "/admin-dashboard/transaction",
-    icon: <FaMoneyBillWave />,
+    icon: <Wallet size={20} />,
     have_child: false,
   },
   {
     name: "سوالات متداول",
     url: "/admin-dashboard/faq",
-    icon: <FaQuestionCircle />,
+    icon: <HelpCircle size={20} />,
     have_child: false,
   },
   {
     name: "نظرات",
     url: "/admin-dashboard/comment",
-    icon: <FaComments />,
+    icon: <MessageCircle size={20} />,
     have_child: false,
   },
 ];
