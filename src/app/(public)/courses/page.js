@@ -8,8 +8,10 @@ import CardItem from "@/shared/components/ui/Cards";
 import ReadyToLearn from "@/features/core/components/StartLearnignCourses";
 const page = () => {
   return (
-    <div>
-      <SectionTitle title={"دوره های ما"} />
+    <div className="bg-gradient-to-r from-[var(--secondary)] to-[var(--secondary)] rounded-b-xl ">
+      <div className="pt-16">
+        <SectionTitle title={"دوره های ما"} />
+      </div>
 
       {/* info boxes */}
       <div className="flex items-center justify-center gap-10">

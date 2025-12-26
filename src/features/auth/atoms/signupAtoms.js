@@ -1,10 +1,12 @@
+"use client";
 import { atom } from "jotai";
 
 const getInitialStep = () => {
   if (typeof window !== "undefined") {
-    const step = localStorage.getItem("signUpStep");
-    if (!step) return 1;
-    return step === "success" ? "success" : Number(step);
+    const saved = localStorage.getItem("signUpStep");
+    if (!saved) return 1;
+    const parsed = Number(saved);
+    return isNaN(parsed) ? 1 : parsed;
   }
   return 1;
 };

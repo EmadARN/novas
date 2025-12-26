@@ -30,7 +30,7 @@ const createAxiosInstance = (baseURL) => {
           return instance(originalConfig);
         } catch (err) {
           if (typeof window !== "undefined") {
-            window.location.href = "/login";
+            window.location.href = "/auth";
           }
           return Promise.reject(err);
         }

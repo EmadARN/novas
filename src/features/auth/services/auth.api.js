@@ -46,9 +46,12 @@ export const register = async (formData) => {
   try {
     const response = await coreHttp.post("auth/signup/", formData);
     const { user, student_information } = response.data;
+    console.log(response, "response");
 
     return { user, student_information };
   } catch (error) {
+    console.log(error, "registerErr");
+
     throw error.response?.data?.error || "Failed to register";
   }
 };

@@ -1,15 +1,20 @@
 "use client";
 
+import React from "react";
 import Link from "next/link";
+import BtnLoader from "./BtnLoader";
 
-export default function GradientButton({
+const GradientButton = ({
   href,
   title,
   className = "",
   type = "button",
-}) {
+  loading = false,
+}) => {
   const baseClasses = `
-    inline-block
+    inline-flex
+    items-center
+    justify-center
     rounded-xl
     px-4 md:px-8
     py-2 md:py-4
@@ -26,17 +31,17 @@ export default function GradientButton({
     ${className}
   `;
 
-  if (href) {
-    return (
-      <Link href={href} className={baseClasses}>
-        {title}
-      </Link>
-    );
-  }
+  const content = loading ? <BtnLoader /> : title;
 
-  return (
-    <button type={type} className={baseClasses}>
-      {title}
+  return href ? (
+    <Link href={href} className={baseClasses}>
+      {content}
+    </Link>
+  ) : (
+    <button type={type} className={baseClasses} disabled={loading}>
+      {content}
     </button>
   );
-}
+};
+
+export default GradientButton;

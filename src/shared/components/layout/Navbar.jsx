@@ -3,12 +3,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import GradientButton from "@/shared/components/ui/Button";
 import { Home, Book, Info, Phone, CheckCircle } from "lucide-react";
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const hiddenRoutes = ["/auth", "/dashboard", "/admin"];
+
+  if (hiddenRoutes.some((route) => pathname.startsWith(route))) {
+    return null;
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,12 +29,12 @@ export default function Navbar() {
   return (
     <nav
       className={`flex justify-center items-center w-full transition-all duration-300 z-50
-      ${
-        isScrolled
-          ? "fixed top-0 shadow-xl bg-white/20 backdrop-blur-md"
-          : "relative py-2 bg-gradient-to-tr from-[var(--primary)] to-[var(--accent)]"
-      }
-      px-4`}
+        ${
+          isScrolled
+            ? "fixed top-0 shadow-xl bg-white/20 backdrop-blur-md"
+            : "relative py-2 bg-gradient-to-tr from-[var(--primary)] to-[var(--accent)]"
+        }
+        px-4`}
     >
       {/* دکمه همبرگر موبایل */}
       <button
@@ -38,7 +46,6 @@ export default function Navbar() {
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
         >
           <path
             strokeLinecap="round"
@@ -68,21 +75,11 @@ export default function Navbar() {
           isScrolled ? "text-gray-700" : "text-white"
         }`}
       >
-        <Link href="/" className="hover:underline">
-          خانه
-        </Link>
-        <Link href="/courses" className="hover:underline">
-          دوره ها
-        </Link>
-        <Link href="/about" className="hover:underline">
-          درباره ما
-        </Link>
-        <Link href="/contact" className="hover:underline">
-          تماس با ما
-        </Link>
-        <Link href="/students" className="hover:underline">
-          قبولی ها
-        </Link>
+        <Link href="/">خانه</Link>
+        <Link href="/courses">دوره‌ها</Link>
+        <Link href="/about">درباره ما</Link>
+        <Link href="/contact">تماس با ما</Link>
+        <Link href="/students">قبولی‌ها</Link>
       </div>
 
       <div className="flex flex-1 justify-end">
@@ -92,9 +89,7 @@ export default function Navbar() {
       {/* منوی موبایل */}
       {menuOpen && (
         <div className="absolute top-full left-0 w-full h-[50vh] bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] text-white flex justify-center items-center md:hidden">
-          {/* container دو ستونه */}
           <div className="flex flex-row gap-4">
-            {/* ستون آیکون‌ها */}
             <div className="flex flex-col justify-center items-end gap-9">
               <Home className="w-4 h-4" />
               <Book className="w-4 h-4" />
@@ -103,23 +98,12 @@ export default function Navbar() {
               <CheckCircle className="w-4 h-4" />
             </div>
 
-            {/* ستون متن‌ها */}
             <div className="flex flex-col justify-center items-start gap-6">
-              <Link href="#home" className="hover:underline text-lg">
-                خانه
-              </Link>
-              <Link href="#portfolio" className="hover:underline text-lg">
-                دوره ها
-              </Link>
-              <Link href="#about" className="hover:underline text-lg">
-                درباره ما
-              </Link>
-              <Link href="#contact" className="hover:underline text-lg">
-                تماس با ما
-              </Link>
-              <Link href="#success" className="hover:underline text-lg">
-                قبولی ها
-              </Link>
+              <Link href="/">خانه</Link>
+              <Link href="/courses">دوره‌ها</Link>
+              <Link href="/about">درباره ما</Link>
+              <Link href="/contact">تماس با ما</Link>
+              <Link href="/students">قبولی‌ها</Link>
             </div>
           </div>
         </div>
