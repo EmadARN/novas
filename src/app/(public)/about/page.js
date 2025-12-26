@@ -1,6 +1,7 @@
+import SkewedInfiniteScroll from "@/features/core/components/aboutPage/SkewedInfiniteScroll";
 import Advisors from "@/features/core/components/Advisors";
 import HeroAbout, { Card } from "@/features/core/components/HeroAbout";
-import SkewedInfiniteScroll from "@/features/core/components/SkewedInfiniteScroll";
+
 import { cardsData } from "@/features/core/constants";
 import CardItem from "@/shared/components/ui/Cards";
 import SectionTitle from "@/shared/components/ui/Tiltes";
@@ -43,7 +44,7 @@ const page = () => {
       </div>
 
       {/* اساتید */}
-      <div className="w-full my-12">
+      <div className="container w-full my-12">
         <SectionTitle title="استاید ما" />
         <section className="flex flex-col sm:flex-row w-full max-w-[820px] justify-center gap-6 my-6">
           {cardsData.map((card, index) => (

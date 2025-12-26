@@ -26,19 +26,29 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navLinks = [
+    { href: "/", label: "خانه" },
+    { href: "/courses", label: "دوره‌ها" },
+    { href: "/about", label: "درباره ما" },
+    { href: "/contact", label: "تماس با ما" },
+    { href: "/students", label: "قبولی‌ها" },
+  ];
+
   return (
     <nav
       className={`flex justify-center items-center w-full transition-all duration-300 z-50
         ${
           isScrolled
-            ? "fixed top-0 shadow-xl bg-white/20 backdrop-blur-md"
-            : "relative py-2 bg-gradient-to-tr from-[var(--primary)] to-[var(--accent)]"
+            ? "fixed top-0 shadow-xl bg-white/40 backdrop-blur-md"
+            : pathname === "/"
+            ? "relative py-2 bg-gradient-to-tr from-[var(--primary)] to-[var(--accent)]"
+            : "relative py-2 bg-[#EBEAED]"
         }
         px-4`}
     >
       {/* دکمه همبرگر موبایل */}
       <button
-        className="flex justify-start md:hidden text-gray-900 focus:outline-none"
+        className="flex justify-start md:hidden text-gray-900 cursor-pointer focus:outline-none"
         onClick={() => setMenuOpen(!menuOpen)}
       >
         <svg
@@ -64,7 +74,7 @@ export default function Navbar() {
           height={100}
           alt="Logo"
           className={`${
-            isScrolled ? "h-20 w-20" : "h-32 w-32"
+            isScrolled ? "h-30 w-30" : "h-32 w-32"
           } transition-all duration-300`}
         />
       </div>
@@ -72,18 +82,38 @@ export default function Navbar() {
       {/* لینک‌ها دسکتاپ */}
       <div
         className={`hidden md:flex pr-6 gap-8 font-bold ${
-          isScrolled ? "text-gray-700" : "text-white"
+          isScrolled
+            ? "text-slate-700"
+            : pathname === "/"
+            ? "text-white"
+            : "text-slate-700"
         }`}
       >
-        <Link href="/">خانه</Link>
-        <Link href="/courses">دوره‌ها</Link>
-        <Link href="/about">درباره ما</Link>
-        <Link href="/contact">تماس با ما</Link>
-        <Link href="/students">قبولی‌ها</Link>
+        {navLinks.map((link) => {
+          const isActive = pathname === link.href;
+          return (
+            <Link key={link.href} href={link.href} className="relative group">
+              {link.label}
+              {/* خط انیمیشن */}
+              <span
+                className={`
+                  absolute left-0 -bottom-1 h-[2px] bg-gradient-to-r from-purple-400 via-pink-500 to-red-500
+                  transition-all duration-300
+                  ${isActive ? "w-full" : "w-0 group-hover:w-full"}
+                `}
+              />
+            </Link>
+          );
+        })}
       </div>
 
       <div className="flex flex-1 justify-end">
-        <GradientButton title="ورود / ثبت نام" href="/auth" />
+        <GradientButton
+          title="ورود / ثبت نام"
+          href="/auth"
+          gradient="bg-gradient-to-r from-[var(--secondary)] to-[var(--secondary)]"
+          textColor="text-[var(--primary)]"
+        />
       </div>
 
       {/* منوی موبایل */}
@@ -99,11 +129,11 @@ export default function Navbar() {
             </div>
 
             <div className="flex flex-col justify-center items-start gap-6">
-              <Link href="/">خانه</Link>
-              <Link href="/courses">دوره‌ها</Link>
-              <Link href="/about">درباره ما</Link>
-              <Link href="/contact">تماس با ما</Link>
-              <Link href="/students">قبولی‌ها</Link>
+              {navLinks.map((link) => (
+                <Link key={link.href} href={link.href}>
+                  {link.label}
+                </Link>
+              ))}
             </div>
           </div>
         </div>

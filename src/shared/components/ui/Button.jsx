@@ -10,6 +10,8 @@ const GradientButton = ({
   className = "",
   type = "button",
   loading = false,
+  textColor = "text-white",
+  gradient = "bg-gradient-to-r from-[var(--primary)] to-[var(--accent)]",
 }) => {
   const baseClasses = `
     inline-flex
@@ -19,14 +21,12 @@ const GradientButton = ({
     px-4 md:px-8
     py-2 md:py-4
     font-bold
-    text-white
     text-sm md:text-md
     shadow-lg
     transition-transform
     hover:scale-105
-    bg-gradient-to-r
-    from-[var(--primary)]
-    to-[var(--accent)]
+    ${textColor}
+    ${gradient}
     cursor-pointer
     ${className}
   `;

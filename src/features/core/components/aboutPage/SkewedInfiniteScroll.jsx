@@ -1,6 +1,6 @@
 "use client";
 
-import { features } from "../constants";
+import { features } from "../../constants";
 
 const SkewedInfiniteScroll = () => {
   const items = features.map((item, index) => ({
@@ -86,7 +86,7 @@ const SkewedInfiniteScroll = () => {
             }
             100% {
               transform: rotateX(20deg) rotateZ(-20deg) skewX(20deg)
-                translateY(-100%);
+                translateY(-50%);
             }
           }
         }
