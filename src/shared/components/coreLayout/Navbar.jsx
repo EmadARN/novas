@@ -111,8 +111,16 @@ export default function Navbar() {
         <GradientButton
           title="ورود / ثبت نام"
           href="/auth"
-          gradient="bg-gradient-to-r from-[var(--secondary)] to-[var(--secondary)]"
-          textColor="text-[var(--primary)]"
+          gradient={`${
+            pathname === "/"
+              ? "bg-gradient-to-r from-[var(--secondary)] to-[var(--secondary)]"
+              : "bg-gradient-to-r from-[var(--primary)] to-[var(--accent)]"
+          }`}
+          textColor={`${
+            pathname === "/"
+              ? "text-[var(--primary)]"
+              : "text-[var(--secondary)]"
+          }`}
         />
       </div>
 

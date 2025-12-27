@@ -22,7 +22,7 @@ export default function CardItem({
       )}
 
       {/* image wrapper (height ثابت) */}
-      <div className="relative h-[235px] w-full shrink-0">
+      <div className="relative h-[190px] w-full shrink-0">
         <Image
           src={image}
           alt={title}
