@@ -1,7 +1,8 @@
 import SkewedInfiniteScroll from "@/features/core/components/aboutPage/SkewedInfiniteScroll";
 import Advisors from "@/features/core/components/Advisors";
-import HeroAbout, { Card } from "@/features/core/components/HeroAbout";
-
+import HeroAbout, {
+  Card,
+} from "@/features/core/components/aboutPage/HeroAbout";
 import { cardsData } from "@/features/core/constants";
 import CardItem from "@/shared/components/ui/Cards";
 import SectionTitle from "@/shared/components/ui/Tiltes";
