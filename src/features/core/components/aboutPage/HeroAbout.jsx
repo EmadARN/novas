@@ -11,6 +11,7 @@ import React, {
 } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 // =====================
 // Card Component (Image Only)
@@ -22,9 +23,9 @@ export const Card = forwardRef(
       {...rest}
       className={`relative overflow-hidden rounded-xl   
       [transform-style:preserve-3d] [will-change:transform] 
-      [backface-visibility:hidden] ${customClass ?? ""} ${
-        rest.className ?? ""
-      }`}
+      [backface-visibility:hidden] border-2 border-gray-50 ${
+        customClass ?? ""
+      } ${rest.className ?? ""}`}
       style={{ ...style, transformOrigin: "center center" }}
       layout
     >
@@ -115,6 +116,7 @@ const CardSwap = ({
   return (
     <section
       className="
+        relative
         px-4 sm:px-8 lg:px-16
         flex flex-col md:flex-row
         items-center lg:items-start
@@ -123,10 +125,10 @@ const CardSwap = ({
         w-full min-h-[90vh] md:min-h-[60vh] xl:min-h-[90vh]
         rounded-b-xl
       "
-      style={{
-        background:
-          "linear-gradient(to bottom right, var(--primary), var(--accent))",
-      }}
+     style={{
+  background: "linear-gradient(to bottom, #EBEAED, var(--primary), var(--accent))",
+}}
+
     >
       {/* کارت‌ها */}
       <div
@@ -137,7 +139,7 @@ const CardSwap = ({
           lg:w-[400px] lg:h-[400px]
           perspective-[400px]
           flex-shrink-0
-          pt-24 sm:pt-20 lg:pt-56  xl:pt-32
+          pt-24 sm:pt-20 lg:pt-56 xl:pt-32
         "
       >
         <AnimatePresence>
@@ -186,21 +188,60 @@ const CardSwap = ({
       {/* متن سمت راست */}
       <div
         className="
-          flex flex-1
-          items-center
-          justify-center lg:justify-start
+          flex flex-col flex-1
+items-center lg:items-start
+          justify-center 
           h-auto lg:h-[60vh]
           max-w-xl
           text-center lg:text-right
         "
       >
-        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold leading-snug text-[#ebeaed]">
+        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold leading-snug text-[#ffffff]">
           نُوا، روشنای مسیر موفقیت
           <br />
           آموزش هوشمند، برنامه‌ریزی دقیق،
           <br />
           آینده‌ای روشن
         </h1>
+
+        <Link href="/auth" passHref>
+          <button
+            className="
+        mt-4
+        px-6 py-3
+        bg-white text-[#261957] font-bold
+        rounded-full
+        shadow-lg
+        hover:scale-105 hover:shadow-xl
+        transition-all duration-300
+        cursor-pointer
+      "
+          >
+            همین حالا یادگیری رو شروع کن
+          </button>
+        </Link>
+      </div>
+
+      {/* فلش پایین */}
+
+      {/* فلش پایین */}
+      <div className="absolute bottom-22 left-1/2 transform -translate-x-1/2">
+        <motion.svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="white"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="w-6 h-6"
+          animate={{ y: [0, 12, 0] }}
+          transition={{ repeat: Infinity, duration: 1.2, ease: "easeInOut" }}
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </motion.svg>
       </div>
     </section>
   );

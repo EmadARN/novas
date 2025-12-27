@@ -1,5 +1,6 @@
 import { vazir } from "@/shared/components/fonts/fonts";
 import "./globals.css";
+import LoaderWrapper from "@/shared/provider/LoaderWrapper";
 
 export const metadata = {
   title: "Create Next App",
@@ -9,7 +10,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl" className={vazir.className}>
-      <body>{children}</body>
+      <body className="min-h-screen">
+        <LoaderWrapper>{children}</LoaderWrapper>
+      </body>
     </html>
   );
 }

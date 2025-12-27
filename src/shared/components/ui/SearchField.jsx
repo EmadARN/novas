@@ -11,7 +11,7 @@ export default function SearchBox({
 }) {
   return (
     <div className="relative md:w-1/2  lg:w-1/3  mx-auto">
-      <div className="relative bg-gradient-to-r from-purple-50/95 via-white/90 to-blue-50/95 backdrop-blur-xl border border-purple-200/70 rounded-3xl shadow-lg overflow-hidden">
+      <div className="relative bg-gradient-to-r from-purple-50/95 via-white/90 to-blue-50/95 backdrop-blur-xl border border-purple-200/70 rounded-2xl shadow-lg overflow-hidden">
         <input
           value={value}
           onChange={(e) => onChange(e.target.value)}

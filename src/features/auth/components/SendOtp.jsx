@@ -1,6 +1,7 @@
 "use client";
 
 import GradientButton from "@/shared/components/ui/Button";
+import { Input } from "@/shared/components/ui/Input";
 
 export default function SendOtp({ defaultConfig, onSubmit, loading }) {
   return (
@@ -14,14 +15,7 @@ export default function SendOtp({ defaultConfig, onSubmit, loading }) {
         </p>
       </div>
 
-      <input
-        type="tel"
-        name="phone"
-        placeholder="09xxxxxxxxx"
-        maxLength={11}
-        className="input-field w-full p-4 rounded-xl border-2 border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary"
-        required
-      />
+      <Input label="شماره" name="phone" />
       <div className="col-span-2 mt-4">
         <GradientButton
           type="submit"

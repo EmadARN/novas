@@ -5,12 +5,12 @@ import { Mail, Phone, MapPin, Send, Clock, Instagram } from "lucide-react";
 
 const ContactUs = () => {
   return (
-    <div className="w-full overflow-auto bg-gradient-to-b from-[#f8f9ff] to-white">
+    <div className="w-full overflow-auto bg-gradient-to-b from-[#f8f9ff] to-white rounded-b-2xl">
       {/* Hero */}
       <div
         style={{
           background:
-            "linear-gradient(to bottom right, var(--primary), var(--accent))",
+            "linear-gradient(to bottom, #EBEAED, var(--primary), var(--accent))",
         }}
         className="text-white py-20 px-6"
       >

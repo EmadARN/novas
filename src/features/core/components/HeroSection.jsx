@@ -1,65 +1,104 @@
 "use client";
 
-export default function HeroSection() {
-  return (
-    <div
-      className="w-full relative overflow-hidden px-4 sm:px-8 md:px-16 min-h-[55vh] md:min-h-[80vh] lg:min-h-[50vh] xl:min-h-[80vh] text-white rounded-b-xl "
-      style={{
-        background:
-          "linear-gradient(to bottom right, var(--primary), var(--accent))",
-      }}
-    >
-      {/* محتوای اصلی */}
-      <div className="max-w-lg mt-12 md:mt-20 relative z-10">
-        <h1 className="text-xl md:text-5xl mb-4 font-bold">
-          نُوا روشنای راه موفقیت
-        </h1>
-        <p className="text-base sm:text-lg md:text-xl mb-8 opacity-90 leading-relaxed">
-          با برنامه‌ای هوشمند، کلاس‌های باکیفیت، اساتید مجرب و اهداف مشخص، مسیر
-          رسیدن به موفقیت خود را روشن و هموار کنید.
-        </p>
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import GradientButton from "@/shared/components/ui/Button";
 
-        <div className="flex flex-col sm:flex-row gap-4">
-          <a
-            href="#see-more"
-            className="bg-white text-purple-800 px-8 py-3 rounded font-medium hover:bg-gray-100 text-center"
-          >
-            دوره ها{" "}
-          </a>
-          <a
-            href="#try-now"
-            className="border-2 border-white text-white px-8 py-3 rounded font-medium hover:bg-white hover:text-purple-800 text-center"
-          >
-            همین حالا ثبت نام کن{" "}
-          </a>
+export default function HeroBanner() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const slides = [
+    {
+      desktop: "/images/home/banner/bannerD3.jpg",
+      mobile: "/images/home/banner/bannerM3.jpg",
+    },
+    {
+      desktop: "/images/home/banner/bannerD2.jpg",
+      mobile: "/images/home/banner/bannerM2.jpg",
+    },
+    {
+      desktop: "/images/home/banner/bannerD1.jpg",
+      mobile: "/images/home/banner/bannerM1.jpg",
+    },
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 8000);
+
+    return () => clearInterval(interval);
+  }, [slides.length]);
+
+  return (
+    <section className="relative h-[calc(100vh-4rem)] overflow-hidden rounded-b-2xl">
+      {/* اسلایدهای پس‌زمینه */}
+      {slides.map((slide, i) => (
+        <div
+          key={i}
+          className={`absolute inset-0 transition-opacity duration-1000 ${
+            i === currentSlide ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <Image
+            src={slide.desktop}
+            alt={`اسلاید ${i + 1}`}
+            fill
+            priority
+            className="hidden md:block object-cover blur-sm"
+          />
+          <Image
+            src={slide.mobile}
+            alt={`اسلاید موبایل ${i + 1}`}
+            fill
+            priority
+            className="md:hidden object-cover blur-sm"
+          />
+        </div>
+      ))}
+
+      {/* overlay تیره */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-black/50 z-0" />
+
+      {/* محتوا */}
+      <div className="relative z-10 flex h-full items-center justify-center px-6 md:px-12">
+        <div className="max-w-3xl mx-auto text-center">
+          <h1 className="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-6">
+            نُوا روشنای راه موفقیت
+          </h1>
+
+          <p className="text-base md:text-lg text-white/90 leading-relaxed mb-10">
+            با برنامه‌ای هوشمند، کلاس‌های باکیفیت، اساتید مجرب و اهداف مشخص،
+            مسیر رسیدن به موفقیت خود را روشن و هموار کنید.
+          </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-6">
+            <GradientButton href="/auth" title="شروع یادگیری" />
+
+            <div className="flex items-center gap-3">
+              <div className="flex -space-x-3">
+                <div className="w-10 h-10 rounded-full bg-gray-300 border-2 border-white" />
+                <div className="w-10 h-10 rounded-full bg-gray-400 border-2 border-white" />
+                <div className="w-10 h-10 rounded-full bg-gray-500 border-2 border-white" />
+              </div>
+              <span className="text-sm text-white/90">+3 هزار دانشجو</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* موج‌ها */}
-      <div
-        className="hidden md:block absolute left-[30%] bottom-[-4%] md:left-[-5%] lg:left-[7%] xl:left-[-5%] md:bottom-[-55%] w-[215px] h-[215px] md:w-[800px] md:h-[800px] border-[2px] border-violet-500 border-opacity-10 rounded-[40%]"
-        style={{ animation: "spin 20s linear infinite" }}
-      ></div>
-      <div
-        className="hidden md:block absolute left-[16%] bottom-[-6%] md:left-[-5%] lg:left-[7%] xl:left-[-5%] md:bottom-[-55%] w-[250px] h-[250px] md:w-[700px] md:h-[700px] border-[2px] border-violet-500 border-opacity-20 rounded-[40%]"
-        style={{ animation: "spin 17s linear infinite" }}
-      ></div>
-      <div
-        className="hidden md:block absolute left-[16%] bottom-[-6%] md:left-[-5%] lg:left-[7%] xl:left-[-5%] md:bottom-[-55%] w-[260px] h-[260px] md:w-[600px] md:h-[600px] border-[2px] border-violet-500 border-opacity-20 rounded-[40%]"
-        style={{ animation: "spin 17s linear infinite" }}
-      ></div>
-
-      {/* Animation keyframes */}
-      <style jsx>{`
-        @keyframes spin {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-      `}</style>
-    </div>
+      {/* اندیکاتورها */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrentSlide(i)}
+            className={`h-2 w-2 rounded-full transition-all duration-300 ${
+              i === currentSlide ? "w-8 bg-white" : "bg-white/50"
+            }`}
+          />
+        ))}
+      </div>
+    </section>
   );
 }

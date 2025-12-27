@@ -37,7 +37,7 @@ const Page = async () => {
       </div>
 
       {/* دوره ها */}
-      <div className="w-full my-12">
+      <div className="container w-full my-12">
         <SectionTitle title=" دوره های آموزشی" />
         <section className="flex flex-col sm:flex-row w-full max-w-[820px] justify-center gap-6 my-6">
           {cardsData.map((card, index) => (
@@ -47,7 +47,7 @@ const Page = async () => {
       </div>
 
       {/* اساتید */}
-      <div className="w-full my-12">
+      <div className="container w-full my-12">
         <SectionTitle title="اساتید ما" />
         <section className="flex flex-col sm:flex-row w-full max-w-[820px] justify-center gap-6 my-6">
           {cardsData.map((card, index) => (

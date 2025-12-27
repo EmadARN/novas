@@ -31,7 +31,6 @@ body {
   height: 100%;
 }
 
-
 .card-hover {
   transition: all 0.3s ease;
 }
@@ -49,4 +48,3 @@ body {
   );
   border: 2px dashed #667eea;
 }
-
