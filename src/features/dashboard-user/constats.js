@@ -93,3 +93,34 @@ export const menuItemsList = [
     have_child: false,
   },
 ];
+
+  export const cards = [
+    {
+      title: "دوره‌ها",
+      count: 4,
+      icon: "📚",
+      color: "from-green-500 to-green-600",
+     
+    },
+    {
+      title: "آزمون‌ها",
+      count: 2,
+      icon: "📝",
+      color: "from-purple-500 to-purple-600",
+     
+    },
+    {
+      title: "اشتراک‌ها",
+      count: 1,
+      icon: "🎟️",
+      color: "from-yellow-400 to-yellow-500",
+   
+    },
+    {
+      title: "کتاب‌ها",
+      count: 3,
+      icon: "📖",
+      color: "from-blue-500 to-blue-600",
+   
+    },
+  ];
