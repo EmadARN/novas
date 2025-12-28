@@ -23,7 +23,7 @@ const createAxiosInstance = (baseURL) => {
         originalConfig._retry = true;
 
         try {
-          await axios.get(`${API_CORE_URL}auth/refresh-token/`, {
+          await axios.post(`${API_CORE_URL}auth/refresh-token/`, {
             withCredentials: true,
           });
 

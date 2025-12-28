@@ -2,18 +2,21 @@
 import { atom } from "jotai";
 
 const getInitialStep = () => {
-  if (typeof window !== "undefined") {
-    const saved = localStorage.getItem("signUpStep");
-    if (!saved) return 1;
-    const parsed = Number(saved);
-    return isNaN(parsed) ? 1 : parsed;
-  }
-  return 1;
+  if (typeof window === "undefined") return 1;
+
+  const saved = localStorage.getItem("signUpStep");
+  const parsed = Number(saved);
+  return isNaN(parsed) ? 1 : parsed;
 };
 
 export const signUpStepAtom = atom(getInitialStep(), (get, set, update) => {
-  set(signUpStepAtom, update);
+  const prev = get(signUpStepAtom);
+
+  const nextValue = typeof update === "function" ? update(prev) : update;
+
+  set(signUpStepAtom, nextValue);
+
   if (typeof window !== "undefined") {
-    localStorage.setItem("signUpStep", update);
+    localStorage.setItem("signUpStep", String(nextValue));
   }
 });

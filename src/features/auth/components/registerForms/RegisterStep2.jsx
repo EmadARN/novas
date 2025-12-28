@@ -1,54 +1,52 @@
 "use client";
 
-import GradientButton from "@/shared/components/ui/Button";
-import SelectBox from "@/shared/components/ui/SelectBox";
+import Select from "react-select";
+import { cities_all } from "../../constants";
 
 export default function RegisterStep2({
   formData,
-  provinces = [],
-  filteredCities = [],
-  handleProvinceChange,
-  handleCityChange,
-  onSubmit,
+  setFormData,
+  provinces,
+  filteredCities,
+  setFilteredCities,
 }) {
+  const handleProvinceChange = (opt) => {
+    const province = opt?.value || "";
+    setFormData((p) => ({ ...p, province, city: "" }));
+
+    setFilteredCities(
+      province
+        ? cities_all.filter((c) => c.provinceName.includes(province))
+        : cities_all
+    );
+  };
+
+  const handleCityChange = (opt) => {
+    setFormData((p) => ({ ...p, city: opt?.label || "" }));
+  };
+
   return (
-    <form onSubmit={onSubmit} className="grid grid-cols-2 gap-4">
-      {/* ---------- استان ---------- */}
-      <div className="flex flex-col py-2">
-        <label className="text-gray-700 mb-1 text-sm font-medium">استان</label>
-        <SelectBox
-          options={provinces}
-          value={formData.province}
-          placeholder="انتخاب استان"
-          onChange={handleProvinceChange}
-        />
-      </div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+      <Select
+        value={provinces.find((p) => p.value === formData.province) || null}
+        onChange={handleProvinceChange}
+        options={provinces}
+        placeholder="انتخاب استان"
+        className="w-full"
+      />
 
-      {/* ---------- شهر ---------- */}
-      <div className="flex flex-col py-2">
-        <label className="text-gray-700 mb-1 text-sm font-medium">شهر</label>
-        <SelectBox
-          options={filteredCities.map((c) => ({
-            value: c.cityName,
-            label: c.cityName,
-          }))}
-          value={formData.city}
-          placeholder={
-            formData.province ? "انتخاب شهر" : "ابتدا استان را انتخاب کنید"
-          }
-          onChange={handleCityChange}
-          disabled={!formData.province}
-        />
-      </div>
-
-      {/* ---------- دکمه ادامه ---------- */}
-      <div className="col-span-2 mt-4">
-        <GradientButton
-          type="submit"
-          title="ادامه"
-          className="w-full text-center"
-        />
-      </div>
-    </form>
+      <Select
+        value={
+          formData.city ? { value: formData.city, label: formData.city } : null
+        }
+        onChange={handleCityChange}
+        options={filteredCities.map((c) => ({
+          value: c.cityName,
+          label: c.cityName,
+        }))}
+        placeholder="انتخاب شهر"
+        className="w-full"
+      />
+    </div>
   );
 }

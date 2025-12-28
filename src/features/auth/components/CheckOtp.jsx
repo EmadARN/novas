@@ -14,9 +14,10 @@ export default function CheckOtp({
   onOtpKeyDown,
   onSubmit,
   onResend,
+  loading,
 }) {
   return (
-    <div className="space-y-4">
+    <div className=" space-y-4">
       {/* ---------- عنوان ---------- */}
       <div className="text-center mb-6">
         <h2 className="text-2xl font-bold text-foreground">
@@ -39,7 +40,7 @@ export default function CheckOtp({
 
       {/* ---------- فرم کد تایید ---------- */}
       <form onSubmit={onSubmit} className="space-y-4">
-        <div   dir="ltr" className="flex justify-center gap-3 mb-4 ">
+        <div dir="ltr" className="flex justify-center gap-3 mb-4 ">
           {Array(otpRefs.current.length)
             .fill(0)
             .map((_, idx) => (
@@ -47,7 +48,7 @@ export default function CheckOtp({
                 key={idx}
                 type="text"
                 maxLength={1}
-                className="otp-input w-14 h-14 text-center border-2 border-gray-400 rounded-xl focus:border-primary"
+                className="otp-input w-6 h-6 md:w-14 md:h-14 text-center border-2 border-gray-400 rounded-xl focus:border-primary"
                 ref={(el) => (otpRefs.current[idx] = el)}
                 onChange={(e) => onOtpChange(e, idx)}
                 onKeyDown={(e) => onOtpKeyDown(e, idx)}
@@ -80,8 +81,9 @@ export default function CheckOtp({
 
         <div className="col-span-2 mt-4">
           <GradientButton
+            loading={loading}
             type="submit"
-            title={defaultConfig.step2_button}
+            title={defaultConfig.step2_title}
             className="w-full text-center "
           />
         </div>

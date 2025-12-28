@@ -1,70 +1,37 @@
 "use client";
 
-import SelectBox from "@/shared/components/ui/SelectBox";
-import GradientButton from "@/shared/components/ui/Button";
+import { SelectBox } from "@/shared/components/ui/SelectBox";
+import { fieldOptions, schoolTypeOptions, yearOptions } from "../../constants";
 
-export default function RegisterStep3({
-  formData,
-  handleChange,
-  handleFieldChange,
-  yearOptions = [],
-  fieldOptions = [],
-  schoolTypeOptions = [],
-  onSubmit,
-}) {
+export default function RegisterStep3({ formData, onChange }) {
   return (
-    <form onSubmit={onSubmit} className="grid grid-cols-2 gap-4">
-      <div className="flex flex-col py-2">
-        <label className="text-gray-700 mb-1 text-sm font-medium">
-          پایه تحصیلی
-        </label>
-        <SelectBox
-          options={yearOptions}
-          value={formData.year}
-          placeholder="انتخاب پایه"
-          onChange={(option) =>
-            handleChange({
-              target: { name: "year", value: option.value },
-            })
-          }
-        />
-      </div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+      <SelectBox
+        label="پایه تحصیلی"
+        name="year"
+        value={formData.year}
+        onChange={onChange}
+        options={yearOptions}
+        className="w-full"
+      />
 
-      <div className="flex flex-col py-2">
-        <label className="text-gray-700 mb-1 text-sm font-medium">
-          رشته تحصیلی
-        </label>
-        <SelectBox
-          options={fieldOptions}
-          value={formData.field}
-          placeholder="انتخاب رشته"
-          onChange={handleFieldChange}
-        />
-      </div>
+      <SelectBox
+        label="رشته"
+        name="field"
+        value={formData.field}
+        onChange={onChange}
+        options={fieldOptions}
+        className="w-full"
+      />
 
-      <div className="flex flex-col py-2">
-        <label className="text-gray-700 mb-1 text-sm font-medium">
-          نوع مدرسه
-        </label>
-        <SelectBox
-          options={schoolTypeOptions}
-          value={formData.schoolType}
-          placeholder="انتخاب نوع مدرسه"
-          onChange={(option) =>
-            handleChange({
-              target: { name: "schoolType", value: option.value },
-            })
-          }
-        />
-      </div>
-
-      <div className="col-span-2 mt-4">
-        <GradientButton
-          type="submit"
-          title="ثبت نهایی"
-          className="w-full text-center"
-        />
-      </div>
-    </form>
+      <SelectBox
+        label="نوع مدرسه"
+        name="school_type"
+        value={formData.school_type}
+        onChange={onChange}
+        options={schoolTypeOptions}
+        className="w-full"
+      />
+    </div>
   );
 }

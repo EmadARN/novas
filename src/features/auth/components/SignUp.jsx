@@ -1,31 +1,67 @@
 "use client";
+
 import { useAtom } from "jotai";
+import { useEffect, useState } from "react";
 import SendOtp from "../components/SendOtp";
 import CheckOtp from "../components/CheckOtp";
-import { signUpStepAtom } from "../atoms/signupAtoms";
+import UserVerify from "./UserVerify";
 import RegisterStep1 from "./registerForms/RegisterStep1";
 import RegisterStep2 from "./registerForms/RegisterStep2";
 import RegisterStep3 from "./registerForms/RegisterStep3";
-import UserVerify from "./UserVerify";
-import { toast } from "react-toastify";
+import { signUpStepAtom } from "../atoms/signupAtoms";
 import useSendOtp from "../hooks/useSendOtp";
 import useCheckOtp from "../hooks/useCheckOtp";
-import useRegisterForm from "../hooks/useRegisterForm";
-import {
-  provinces,
-  fieldOptions,
-  yearOptions,
-  schoolTypeOptions,
-} from "../constants";
+import { register } from "../services/auth.api";
+import { cities_all, provinces } from "../constants";
+import BtnLoader from "@/shared/components/ui/BtnLoader";
+
+const defaultConfig = {
+  step1_title: "ورود شماره موبایل",
+  step1_subtitle: "لطفا شماره موبایل خود را وارد کنید",
+  step2_title: "تایید کد OTP",
+  step2_subtitle: "کد ارسال شده را وارد کنید",
+};
 
 export default function SignUp() {
   const [currentStep, setCurrentStep] = useAtom(signUpStepAtom);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [filteredCities, setFilteredCities] = useState(cities_all);
 
+  /* =======================
+      فرم دیتا اصلی (اصلاح‌شده)
+  ======================= */
+  const [formData, setFormData] = useState({
+    first_name: "",
+    last_name: "",
+    father_name: "",
+    birthday: "",
+    gender: "",
+    province: "",
+    city: "",
+    year: "",
+    field: "",
+    school_type: "",
+    national_code: "",
+    address: "",
+  });
+
+  /* ======================= */
+  useEffect(() => {
+    const savedStep = localStorage.getItem("signUpStep");
+    if (!savedStep) setCurrentStep(1);
+  }, [setCurrentStep]);
+
+  useEffect(() => {
+    localStorage.setItem("signUpStep", currentStep.toString());
+  }, [currentStep]);
+
+  /* ======================= OTP ======================= */
   const {
     phoneNumber,
     handlePhoneSubmit,
     loading: loadingPhone,
   } = useSendOtp();
+
   const {
     otpRefs,
     otpError,
@@ -38,68 +74,66 @@ export default function SignUp() {
     loading: loadingOtp,
   } = useCheckOtp(phoneNumber);
 
-  const {
-    formData,
-    filteredCities,
-    handleChange,
-    handleProvinceChange,
-    handleCityChange,
-    handleFieldChange,
-    handleBirthdayChange,
-    handleNext,
-    handlePrev,
-    handleSubmit,
-  } = useRegisterForm(phoneNumber);
-
-  const defaultConfig = {
-    step1_title: "ورود شماره موبایل",
-    step1_subtitle: "لطفا شماره موبایل خود را وارد کنید",
-    step2_title: "تایید کد OTP",
-    step2_subtitle: "کد ارسال شده را وارد کنید",
+  /* ======================= Handlers ======================= */
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleNext = () => setCurrentStep((p) => p + 1);
+  const handlePrev = () => setCurrentStep((p) => p - 1);
+
+  const handleSubmit = async () => {
+    try {
+      setIsSubmitting(true);
+
+      const payload = {
+        ...formData,
+        phone: phoneNumber,
+      };
+
+      await register(payload);
+
+      localStorage.removeItem("signUpStep");
+      setCurrentStep(6);
+    } catch (err) {
+      console.error(err);
+      alert("ثبت نام انجام نشد");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  /* ======================= UI ======================= */
   return (
-    <div className="min-h-screen flex items-center justify-center relative py-8 md:min-w-[450px]">
-      <div className="w-full max-w-md bg-light rounded-3xl shadow-lg p-8 relative z-10">
-        {currentStep !== 6 && (
+    <div className="min-h-screen flex items-center justify-center py-8">
+      <div className="w-full min-w-sm bg-light rounded-3xl shadow-lg p-8">
+        {currentStep <= 5 && (
           <div className="mb-6">
-            <div className="flex justify-between mb-2">
-              <span className="text-sm font-medium text-primary">{`مرحله ${
-                currentStep > 5 ? 5 : currentStep
-              } از 5`}</span>
-            </div>
-            <div className="w-full h-1 bg-gray-200 rounded">
+            <span className="text-sm text-primary">
+              مرحله {currentStep} از 5
+            </span>
+            <div className="w-full h-1 bg-gray-200 rounded mt-2">
               <div
                 className="h-1 rounded"
                 style={{
-                  width:
-                    currentStep === 1
-                      ? "20%"
-                      : currentStep === 2
-                      ? "40%"
-                      : currentStep === 3
-                      ? "60%"
-                      : currentStep === 4
-                      ? "80%"
-                      : "100%",
-                  background: `linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%)`,
+                  width: `${currentStep * 20}%`,
+                  background:
+                    "linear-gradient(90deg, var(--primary), var(--accent))",
                 }}
               />
             </div>
           </div>
         )}
-
         {currentStep === 1 && (
           <SendOtp
-            defaultConfig={defaultConfig}
             onSubmit={(e) => handlePhoneSubmit(e, handleNext)}
             loading={loadingPhone}
+            defaultConfig={defaultConfig}
           />
         )}
-
         {currentStep === 2 && (
           <CheckOtp
-            defaultConfig={defaultConfig}
             maskedPhone={phoneNumber}
             otpRefs={otpRefs}
             otpError={otpError}
@@ -111,55 +145,59 @@ export default function SignUp() {
             onResend={handleResend}
             loading={loadingOtp}
             onEditNumber={() => setCurrentStep(1)}
+            defaultConfig={defaultConfig}
           />
         )}
-
         {currentStep === 3 && (
           <RegisterStep1
             formData={formData}
-            handleChange={handleChange}
-            handleBirthdayChange={handleBirthdayChange}
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleNext();
-            }}
-            loading={false}
+            onChange={handleChange}
+            setFormData={setFormData}
           />
         )}
-
         {currentStep === 4 && (
           <RegisterStep2
             formData={formData}
+            setFormData={setFormData}
             provinces={provinces}
             filteredCities={filteredCities}
-            handleProvinceChange={handleProvinceChange}
-            handleCityChange={handleCityChange}
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleNext();
-            }}
-            loading={false}
+            setFilteredCities={setFilteredCities}
           />
         )}
-
         {currentStep === 5 && (
-          <RegisterStep3
-            formData={formData}
-            handleChange={handleChange}
-            handleFieldChange={handleFieldChange}
-            fieldOptions={fieldOptions}
-            yearOptions={yearOptions}
-            schoolTypeOptions={schoolTypeOptions}
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleSubmit();
-            }}
-            loading={false}
-          />
+          <RegisterStep3 formData={formData} onChange={handleChange} />
         )}
+        <div className="flex justify-between mt-8 gap-3">
+          {currentStep >= 4 && currentStep < 6 && (
+            <button
+              onClick={handlePrev}
+              className="px-5 py-3 bg-gray-200 rounded-lg cursor-pointer"
+            >
+              مرحله قبل
+            </button>
+          )}
 
+          {currentStep >= 3 && currentStep < 5 ? (
+            <button
+              onClick={handleNext}
+              className="px-5 py-3 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] text-white rounded-lg cursor-pointer "
+            >
+              مرحله بعد
+            </button>
+          ) : (
+            currentStep === 5 && (
+              <button
+                onClick={handleSubmit}
+                disabled={isSubmitting}
+                className="px-5 py-3 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] text-white rounded-lg cursor-pointer"
+              >
+                {isSubmitting ? <BtnLoader /> : "ثبت نهایی"}
+              </button>
+            )
+          )}
+        </div>
         {currentStep === 6 && (
-          <div className="text-center space-y-4">
+          <div className="w-full min-w-sm bg-light rounded-3xl  p-8">
             <UserVerify />
           </div>
         )}

@@ -2689,8 +2689,6 @@ export const cities_all = [
   },
 ];
 
-
-
 export const provinces = [
   { value: "", label: "انتخاب استان" },
   { value: "زنجان", label: "زنجان" },
@@ -2752,9 +2750,7 @@ export const yearOptions = [
 ];
 
 export const genders = [
-  [
-    { value: "", label: "انتخاب جنسیت" },
-    { value: "male", label: "مرد" },
-    { value: "female", label: "زن" },
-  ],
+  { value: "", label: "انتخاب جنسیت" },
+  { value: "male", label: "مرد" },
+  { value: "female", label: "زن" },
 ];
