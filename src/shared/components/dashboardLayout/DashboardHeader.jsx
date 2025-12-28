@@ -76,7 +76,7 @@ export default function DashboardHeader({ is_side_bar_open, onToggleSidebar }) {
   if (isLoading) return null;
 
   return (
-    <header className="fixed top-0 left-0 z-40 h-20 w-full lg:w-5/6 bg-white text-gray-800 shadow-md flex items-center justify-between px-4">
+    <header className="fixed top-2  z-40 h-20 w-full bg-white text-gray-800 shadow-md flex items-center justify-between px-4">
       <div className="flex items-center">
         {!is_side_bar_open && (
           <button
