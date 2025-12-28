@@ -2,8 +2,8 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 
-// داده‌های پیش‌فرض فارسی
 const defaultAccordionData = [
   {
     id: "ac-1",
@@ -34,8 +34,6 @@ const defaultAccordionData = [
 export default function Accordion({ data = defaultAccordionData }) {
   const [activeId, setActiveId] = useState(data[0].id);
   const contentRefs = useRef({});
-
-  // محاسبه ارتفاع خودکار هر آیتم
   const [heights, setHeights] = useState({});
 
   useEffect(() => {
@@ -65,9 +63,15 @@ export default function Accordion({ data = defaultAccordionData }) {
           />
           <label
             htmlFor={item.id}
-            className="relative z-20 block cursor-pointer bg-white bg-gradient-to-b from-white to-gray-200 text-[var(--primary)] font-bold font-sans text-lg sm:text-base md:text-lg leading-7 sm:leading-6 md:leading-7 shadow-sm px-4 sm:px-5 py-2 sm:py-2 rounded-md"
+            className="relative z-20 flex justify-between items-center cursor-pointer bg-white bg-gradient-to-b from-white to-gray-200 text-[var(--primary)] font-bold font-sans text-lg sm:text-base md:text-lg leading-7 sm:leading-6 md:leading-7 shadow-sm px-4 sm:px-5 py-2 sm:py-2 rounded-md"
           >
-            {item.title}
+            <span>{item.title}</span>
+            <motion.span
+              animate={{ rotate: activeId === item.id ? 180 : 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              <ChevronDown className="w-5 h-5" />
+            </motion.span>
           </label>
 
           <AnimatePresence initial={false}>
