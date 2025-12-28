@@ -137,9 +137,16 @@ export default function CoursesPage() {
                   </SafeRender>
                 ))
               ) : (
-                <div className="col-span-full text-center py-8">
-                  <BookOpen className="w-12 h-12 text-gray-300 mx-auto mb-2" />
-                  <p className="text-gray-500 text-sm">هیچ دوره‌ای یافت نشد</p>
+                <div className="col-span-full flex flex-col items-center justify-center py-16 text-center">
+                  <div className="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center mb-4">
+                    <BookOpen className="w-8 h-8 text-purple-600" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-purple-900 mb-1">
+              دوره ای وجود ندارد
+                  </h3>
+                  <p className="text-sm text-gray-500">
+                    در حال حاضر هیچ دوره ای برای شما ثبت نشده است
+                  </p>
                 </div>
               )}
             </div>
