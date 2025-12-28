@@ -25,7 +25,7 @@ export default function StudentsPage() {
         className="w-full"
         style={{
           background:
-            "linear-gradient(to bottom, #EBEAED, var(--primary), var(--accent))",
+            "linear-gradient(to bottom, #EBEAED, var(--primary)",
         }}
       >
         <div className="text-white py-20 px-6">

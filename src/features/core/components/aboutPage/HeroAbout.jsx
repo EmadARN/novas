@@ -117,18 +117,19 @@ const CardSwap = ({
     <section
       className="
         relative
+        xl:pt-28
         px-4 sm:px-8 lg:px-16
         flex flex-col md:flex-row
         items-center lg:items-start
         justify-between
         gap-12
-        w-full min-h-[90vh] md:min-h-[60vh] xl:min-h-[90vh]
+        w-full min-h-[90vh] md:min-h-[60vh] xl:min-h-[85vh]
         rounded-b-xl
       "
-     style={{
-  background: "linear-gradient(to bottom, #EBEAED, var(--primary), var(--accent))",
-}}
-
+      style={{
+        background:
+          "linear-gradient(to bottom, #EBEAED, var(--primary))",
+      }}
     >
       {/* کارت‌ها */}
       <div
