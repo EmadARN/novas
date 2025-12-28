@@ -15,11 +15,12 @@ export default function SendOtp({ defaultConfig, onSubmit, loading }) {
         </p>
       </div>
 
-      <Input label="شماره" name="phone" />
+      <Input label="شماره همراه" name="phone" />
       <div className="col-span-2 mt-4">
         <GradientButton
+          loading={loading}
           type="submit"
-          title={defaultConfig.step1_button}
+          title={defaultConfig.step1_title}
           className="w-full text-center"
         />
       </div>

@@ -3,74 +3,64 @@
 import DatePicker from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
+import { SelectBox } from "@/shared/components/ui/SelectBox";
 import { Input } from "@/shared/components/ui/Input";
-import SelectBox from "@/shared/components/ui/SelectBox";
-import GradientButton from "@/shared/components/ui/Button";
+import { genders } from "../../constants";
 
-export default function RegisterStep1({
-  formData,
-  handleChange,
-  handleBirthdayChange,
-  onSubmit,
-}) {
+export default function RegisterStep1({ formData, onChange, setFormData }) {
   return (
-    <form onSubmit={onSubmit} className="grid grid-cols-2 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
       <Input
         label="نام"
-        name="firstName"
-        value={formData.firstName}
-        onChange={handleChange}
+        name="first_name"
+        value={formData.first_name}
+        onChange={onChange}
       />
       <Input
         label="نام خانوادگی"
-        name="lastName"
-        value={formData.lastName}
-        onChange={handleChange}
+        name="last_name"
+        value={formData.last_name}
+        onChange={onChange}
       />
       <Input
         label="نام پدر"
-        name="fatherName"
-        value={formData.fatherName}
-        onChange={handleChange}
+        name="father_name"
+        value={formData.father_name}
+        onChange={onChange}
       />
 
-      <div className="flex flex-col py-2">
-        <label className="text-gray-700 mb-1 text-sm font-medium">
-          تاریخ تولد
-        </label>
+      <div className="flex flex-col pt-4 ">
+        <label className="text-sm pb-0.5">تاریخ تولد</label>
         <DatePicker
           calendar={persian}
           locale={persian_fa}
           value={formData.birthday}
-          onChange={handleBirthdayChange}
-          placeholder="انتخاب تاریخ"
-          className="w-full rounded-lg px-4 py-2 border border-gray-300 bg-white text-gray-800"
-          inputClass="w-full"
+          style={{ height: "35px", width: "100%" }}
+          onChange={(date) => {
+            if (!date) {
+              setFormData((p) => ({ ...p, birthday: "" }));
+              return;
+            }
+
+            const gregorianDate = date
+              .convert("gregorian")
+              .format("YYYY-MM-DD");
+
+            setFormData((prev) => ({
+              ...prev,
+              birthday: gregorianDate,
+            }));
+          }}
         />
       </div>
 
-      <div className="flex flex-col py-2">
-        <label className="text-gray-700 mb-1 text-sm font-medium">جنسیت</label>
-        <SelectBox
-          options={[
-            { value: "", label: "انتخاب جنسیت" },
-            { value: "male", label: "مرد" },
-            { value: "female", label: "زن" },
-          ]}
-          value={formData.gender}
-          onChange={(selected) =>
-            handleChange({ target: { name: "gender", value: selected.value } })
-          }
-        />
-      </div>
-
-      <div className="col-span-2 mt-4">
-        <GradientButton
-          type="submit"
-          title="ادامه"
-          className="w-full text-center"
-        />
-      </div>
-    </form>
+      <SelectBox
+        label="جنسیت"
+        name="gender"
+        value={formData.gender}
+        onChange={onChange}
+        options={genders}
+      />
+    </div>
   );
 }
