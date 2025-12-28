@@ -8,7 +8,7 @@
   /* رنگ‌های پس‌زمینه */
   --secondary: #ebeaed; /* خیلی روشن، ملایم و مدرن */
   --light: #ffffff; /* سفید خالص برای فضای باز */
-  --background: #f8f9ff; /* زمینه اصلی سایت */
+  --background: #8e78c9; /* زمینه اصلی سایت */
 
   /* رنگ متن و محتوا */
   --foreground: #1f1f3a; /* خاکستری تیره، قابل خواندن */
@@ -20,7 +20,7 @@ html {
 }
 
 body {
-  background-image: linear-gradient(90deg, var(--accent), var(--primary));
+  background-image: linear-gradient(90deg, var(--background), var(--primary));
   color: var(--foreground);
 }
 

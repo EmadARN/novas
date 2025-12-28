@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import axios from "axios";
 import { FaBars, FaUserCircle } from "react-icons/fa";
-import { API_CORE_URL } from "@/lib/axios";
+import { API_CORE_URL } from "@/lib/api"; 
 
 export default function DashboardHeader({ is_side_bar_open, onToggleSidebar }) {
   const router = useRouter();

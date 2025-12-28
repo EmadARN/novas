@@ -34,7 +34,7 @@ export default function Sidebar({
       )}
 
       {/* Desktop Sidebar */}
-      <div className="hidden lg:flex absolute top-0 right-0 h-full w-1/6 z-50 flex-col bg-gradient-to-b from-gray-800 via-gray-700 to-gray-800 shadow-xl">
+      <div className="hidden lg:flex absolute top-0 right-0 h-full w-full z-50 flex-col bg-gradient-to-b from-gray-800 via-gray-700 to-gray-800 shadow-xl">
         {/* Logo */}
         <div className="flex items-center justify-center h-36 border-b border-gray-600">
           <Link href="/">
@@ -109,7 +109,7 @@ export default function Sidebar({
 
       {/* Mobile Sidebar */}
       <div
-        className={`fixed top-0 right-0 h-full w-1/2 z-50 lg:hidden transition-transform duration-300 bg-gradient-to-b from-gray-800 via-gray-700 to-gray-800 shadow-xl ${
+        className={`fixed top-0 right-0 h-full w-full z-50 lg:hidden transition-transform duration-300 bg-gradient-to-b from-gray-800 via-gray-700 to-gray-800 shadow-xl ${
           is_menu_open ? "translate-x-0" : "translate-x-full"
         }`}
       >

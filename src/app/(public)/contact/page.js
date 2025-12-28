@@ -9,8 +9,7 @@ const ContactUs = () => {
       {/* Hero */}
       <div
         style={{
-          background:
-            "linear-gradient(to bottom, #EBEAED, var(--primary), var(--accent))",
+          background: "linear-gradient(to bottom, #EBEAED, var(--primary)",
         }}
         className="text-white py-20 px-6"
       >
@@ -27,7 +26,7 @@ const ContactUs = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Email */}
           <div className="bg-white rounded-2xl p-8 shadow-lg card-hover">
-            <div className="w-16 h-16 bg-gradient-to-br from-[#667eea] to-[#764ba2] rounded-full flex items-center justify-center mx-auto mb-4 text-white">
+            <div className="w-16 h-16 bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] rounded-full flex items-center justify-center mx-auto mb-4 text-white">
               <Mail />
             </div>
             <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">
@@ -38,7 +37,7 @@ const ContactUs = () => {
             </p>
             <a
               href="mailto:info@novawise.com"
-              className="block w-full text-center py-3 px-6 bg-gradient-to-br from-[#667eea] to-[#764ba2] text-white rounded-xl font-medium hover:opacity-90 transition"
+              className="block w-full text-center py-3 px-6 bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] text-white rounded-xl font-medium hover:opacity-90 transition"
             >
               ارسال ایمیل
             </a>
@@ -46,7 +45,7 @@ const ContactUs = () => {
 
           {/* Phone */}
           <div className="bg-white rounded-2xl p-8 shadow-lg card-hover">
-            <div className="w-16 h-16 bg-gradient-to-br from-[#667eea] to-[#764ba2] rounded-full flex items-center justify-center mx-auto mb-4 text-white">
+            <div className="w-16 h-16 bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] rounded-full flex items-center justify-center mx-auto mb-4 text-white">
               <Phone />
             </div>
             <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">
@@ -55,7 +54,7 @@ const ContactUs = () => {
             <p className="text-gray-600 text-center mb-4">۰۲۱-۱۲۳۴۵۶۷۸</p>
             <a
               href="tel:02112345678"
-              className="block w-full text-center py-3 px-6 bg-gradient-to-br from-[#667eea] to-[#764ba2] text-white rounded-xl font-medium hover:opacity-90 transition"
+              className="block w-full text-center py-3 px-6 bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] text-white rounded-xl font-medium hover:opacity-90 transition"
             >
               تماس تلفنی
             </a>
@@ -63,7 +62,7 @@ const ContactUs = () => {
 
           {/* Address */}
           <div className="bg-white rounded-2xl p-8 shadow-lg card-hover">
-            <div className="w-16 h-16 bg-gradient-to-br from-[#667eea] to-[#764ba2] rounded-full flex items-center justify-center mx-auto mb-4 text-white">
+            <div className="w-16 h-16 bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] rounded-full flex items-center justify-center mx-auto mb-4 text-white">
               <MapPin />
             </div>
             <h3 className="text-xl font-semibold text-gray-800 mb-2 text-center">
@@ -78,7 +77,7 @@ const ContactUs = () => {
                   .getElementById("map-section")
                   .scrollIntoView({ behavior: "smooth" })
               }
-              className="block w-full text-center py-3 px-6 bg-gradient-to-br from-[#667eea] to-[#764ba2] text-white rounded-xl font-medium hover:opacity-90 transition"
+              className="block w-full text-center py-3 px-6 bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] text-white rounded-xl font-medium hover:opacity-90 transition"
             >
               مشاهده نقشه
             </button>

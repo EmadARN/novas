@@ -13,11 +13,6 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   const hiddenRoutes = ["/auth", "/dashboard", "/admin"];
-
-  if (hiddenRoutes.some((route) => pathname.startsWith(route))) {
-    return null;
-  }
-
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 80);
@@ -25,6 +20,10 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  
+  if (hiddenRoutes.some((route) => pathname.startsWith(route))) {
+    return null;
+  }
 
   const navLinks = [
     { href: "/", label: "خانه" },
@@ -41,7 +40,7 @@ export default function Navbar() {
           isScrolled
             ? "fixed top-0 shadow-xl bg-white/40 backdrop-blur-md"
             : pathname === "/"
-            ? "relative py-2 bg-gradient-to-tr from-[var(--primary)] to-[var(--accent)]"
+            ? "relative py-2 bg-gradient-to-br from-[var(--background)] to-[var(--primary)]"
             : "relative py-2 bg-[#EBEAED]"
         }
         px-4`}
