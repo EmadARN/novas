@@ -1,7 +1,8 @@
+import Financial from "@/features/dashboard-user/components/finance/Finance";
 import React from "react";
 
 const FinancialPage = () => {
-  return <div>FinancialPage</div>;
+  return <Financial />;
 };
 
 export default FinancialPage;

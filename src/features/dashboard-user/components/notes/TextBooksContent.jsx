@@ -3,7 +3,7 @@ import React, { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 // import { toast } from 'react-toastify';
-import TextBookCard from "./TextBookCard"; 
+import TextBookCard from "./TextBookCard";
 // import { getTextBooks } from "@/src/api/dashboard/textbook";
 import { BookOpen, Filter } from "lucide-react";
 
@@ -70,7 +70,7 @@ function TextBooksContent() {
       <div className="container mx-auto py-6 px-4">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-semibold text-purple-900 flex items-center gap-2">
+          <h1 className="text-2xl font-semibold text-[var(--primary)] flex items-center gap-2">
             <BookOpen className="w-5 h-5" />
             لیست جزوه‌ها
           </h1>
@@ -89,7 +89,7 @@ function TextBooksContent() {
         {allCourses.length > 0 && (
           <div className="bg-white rounded-xl p-4 mb-6 border border-gray-100">
             <div className="flex items-center justify-between mb-3">
-              <h2 className="text-sm font-medium text-purple-900 flex items-center gap-1">
+              <h2 className="text-sm font-medium text-[var(--accent)] flex items-center gap-1">
                 <Filter className="w-4 h-4" />
                 دوره
               </h2>
@@ -101,7 +101,7 @@ function TextBooksContent() {
                                     px-3 py-2 rounded-lg text-xs font-medium transition-colors
                                     ${
                                       !selectedCourseId
-                                        ? "bg-purple-900 text-white"
+                                        ? "bg-[var(--primary)] text-white"
                                         : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                                     }
                                 `}
@@ -116,7 +116,7 @@ function TextBooksContent() {
                                         px-3 py-2 rounded-lg text-xs font-medium transition-colors
                                         ${
                                           selectedCourseId === course.id
-                                            ? "bg-purple-900 text-white"
+                                            ? "bg-[var(--primary)] text-white"
                                             : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                                         }
                                     `}
@@ -140,9 +140,9 @@ function TextBooksContent() {
             ) : (
               <div className="col-span-full flex flex-col items-center justify-center py-16 text-center">
                 <div className="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center mb-4">
-                  <BookOpen className="w-8 h-8 text-purple-600" />
+                  <BookOpen className="w-8 h-8 text-[var(--accent)]" />
                 </div>
-                <h3 className="text-lg font-semibold text-purple-900 mb-1">
+                <h3 className="text-lg font-semibold text-[var(--accent)] mb-1">
                   هیچ جزوه ای یافت نشد
                 </h3>
                 <p className="text-sm text-gray-500">

@@ -1,5 +1,5 @@
-import SpendingChart from "../SpendingChart";
-import SubscriptionChart from "../SubscriptionChart";
+import SpendingChart from "./SpendingChart";
+import SubscriptionChart from "./SubscriptionChart";
 
 
 const DashboardCharts = ({ spendingData, subscriptionData }) => (

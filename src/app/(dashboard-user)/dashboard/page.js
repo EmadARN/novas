@@ -1,9 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import DashboardCharts from "@/features/dashboard-user/components/DeskPage/container/DashboardCharts";
+
 import CoursesTable from "@/features/dashboard-user/components/DeskPage/CoursesTable";
 import DashboardCards from "@/features/dashboard-user/components/DeskPage/DashboardCards";
 import { cards } from "@/features/dashboard-user/constats";
+import DashboardCharts from "@/features/dashboard-user/components/DeskPage/DashboardCharts";
 
 const Dashboard = () => {
   return (
