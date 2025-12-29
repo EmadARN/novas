@@ -67,19 +67,19 @@ const UserTable = ({
       <div className="bg-white rounded-2xl p-6 mb-6 border border-gray-100 shadow-sm">
         <div className="flex flex-col sm:flex-row sm:justify-between gap-4">
           <div>
-            <h3 className="text-xl font-semibold text-gray-900">{title}</h3>
-            <p className="text-sm text-gray-500 mt-1">{description}</p>
+            <h3 className="text-xl font-semibold text-[var(--primary)]">{title}</h3>
+            <p className="text-sm text-[var(--accent)] mt-1">{description}</p>
           </div>
 
           <div className="relative w-full sm:w-64">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-600" />
+            <Search className="absolute left-3 top-2/5 -translate-y-1/2 w-4 h-4 text-[var(--accent)]" />
             <input
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="جستجو..."
               className="
                 w-full h-10 pl-10 pr-3 rounded-xl border border-gray-200
-                bg-gray-50 text-sm placeholder:text-gray-500
+                bg-gray-50 text-sm placeholder:text-[var(--accent)]
                 focus:border-gray-600 focus:ring-1 focus:ring-gray-600/20
                 transition
               "
@@ -101,7 +101,7 @@ const UserTable = ({
                 border transition
                 ${
                   active
-                    ? "bg-gray-900 text-white border-gray-900"
+                    ? "bg-[var(--primary)] text-white border-gray-900"
                     : "bg-white text-gray-700 border-gray-200 hover:border-gray-500"
                 }
               `}
@@ -117,7 +117,7 @@ const UserTable = ({
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="bg-gray-900">
+              <tr className="bg-[var(--primary)]">
                 <th className="p-4 text-right text-sm font-semibold text-white">
                   ردیف
                 </th>
@@ -217,7 +217,7 @@ const UserTable = ({
       </div>
 
       {/* Footer */}
-      <div className="mt-4 text-sm text-gray-700 flex justify-between font-medium">
+      <div className="mt-4 text-sm text-[var(--accent)] flex justify-between font-medium">
         <span>
           {filteredData.length} از {tableData.length} ردیف
         </span>

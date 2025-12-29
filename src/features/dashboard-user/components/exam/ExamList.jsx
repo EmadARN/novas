@@ -9,9 +9,9 @@ const ExamList = ({ exams, is_admin }) => {
     return (
       <div className="flex flex-col items-center justify-center py-16 text-center">
         <div className="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center mb-4">
-          <FileX className="w-8 h-8 text-purple-600" />
+          <FileX className="w-8 h-8 text-[var(--accent)]" />
         </div>
-        <h3 className="text-lg font-semibold text-purple-900 mb-1">
+        <h3 className="text-lg font-semibold text-[var(--accent)] mb-1">
           آزمونی وجود ندارد
         </h3>
         <p className="text-sm text-gray-500">
@@ -59,14 +59,12 @@ const ExamList = ({ exams, is_admin }) => {
               <div className="flex flex-wrap gap-2 pt-2 border-t theme-border-light text-sm theme-text-primary">
                 {exam.start_time && (
                   <span className="theme-glass-accent px-3 py-1 rounded-lg">
-                    شروع:{" "}
-                    {new Date(exam.start_time).toLocaleString("fa-IR")}
+                    شروع: {new Date(exam.start_time).toLocaleString("fa-IR")}
                   </span>
                 )}
                 {exam.deadline && (
                   <span className="theme-glass-accent px-3 py-1 rounded-lg">
-                    مهلت:{" "}
-                    {new Date(exam.deadline).toLocaleString("fa-IR")}
+                    مهلت: {new Date(exam.deadline).toLocaleString("fa-IR")}
                   </span>
                 )}
                 {exam.duration_minutes && (

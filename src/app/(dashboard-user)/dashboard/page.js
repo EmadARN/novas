@@ -6,11 +6,6 @@ import DashboardCards from "@/features/dashboard-user/components/DeskPage/Dashbo
 import { cards } from "@/features/dashboard-user/constats";
 
 const Dashboard = () => {
-
-
-
-
-
   return (
     <div className="container mx-autospace-y-8 p-6">
       <DashboardCards cards={cards} />
@@ -21,8 +16,6 @@ const Dashboard = () => {
       />
 
       <CoursesTable columns={[]} data={[]} />
-
-     
     </div>
   );
 };

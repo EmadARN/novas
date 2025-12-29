@@ -40,7 +40,7 @@ export default function AllExam() {
       <div className="container mx-auto py-6 px-4">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-semibold text-purple-900 flex items-center gap-2">
+          <h1 className="text-2xl font-semibold text-[var(--primary)] flex items-center gap-2">
             <FileText className="w-5 h-5" />
             لیست آزمون‌ها
           </h1>
