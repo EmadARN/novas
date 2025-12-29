@@ -8,6 +8,7 @@ import {
   PenTool,
   Wallet,
 } from "lucide-react";
+import { DollarSign, CreditCard, Receipt } from "lucide-react";
 
 export const examInit = [
   {
@@ -118,5 +119,108 @@ export const cards = [
     count: 3,
     icon: "📖",
     color: "from-blue-500 to-blue-600",
+  },
+];
+
+//Finance:
+
+export const TABS = [
+  {
+    key: "transactions",
+    label: "تراکنش‌ها",
+    icon: <DollarSign className="w-4 h-4" />,
+  },
+  {
+    key: "subscriptions",
+    label: "اشتراک‌ها",
+    icon: <CreditCard className="w-4 h-4" />,
+  },
+  {
+    key: "installments",
+    label: "اقساط",
+    icon: <Receipt className="w-4 h-4" />,
+  },
+];
+
+export const transactionTableHead = [
+  {
+    columnName: "کاربر",
+    type: "string",
+    name: "user__username",
+    format: (v) => v || "ناشناس",
+  },
+  {
+    columnName: "مبلغ (ریال)",
+    type: "float",
+    name: "amount",
+    format: (v) => v.toLocaleString("fa-IR"),
+  },
+  { columnName: "توضیحات", type: "string", name: "description" },
+  { columnName: "کد تراکنش", type: "string", name: "transaction_code" },
+  {
+    columnName: "تاریخ",
+    type: "string",
+    name: "created_at",
+    format: (v) => new Date(v).toLocaleString("fa-IR"),
+  },
+];
+
+export const subscriptionTableHead = (openDialog) => [
+  {
+    columnName: "کاربر",
+    type: "string",
+    name: "user_detail__username",
+    format: (v) => v || "ناشناس",
+  },
+  { columnName: "دوره", type: "string", name: "course_detail__title" },
+  {
+    columnName: "نوع پرداخت",
+    type: "string",
+    name: "payment_type_display",
+  },
+  {
+    columnName: "تاریخ",
+    type: "string",
+    name: "create_at",
+    format: (v) => new Date(v).toLocaleString("fa-IR"),
+  },
+  {
+    columnName: "جزئیات",
+    type: "button",
+    buttonName: "مشاهده",
+    onClick: (sub) => openDialog("view_subscription", sub),
+  },
+];
+
+export const installmentTableHead = (openDialog) => [
+  {
+    columnName: "کاربر",
+    type: "string",
+    name: "subscription__user__username",
+    format: (v) => v || "ناشناس",
+  },
+  {
+    columnName: "دوره",
+    type: "string",
+    name: "subscription__course__title",
+  },
+  {
+    columnName: "مبلغ (ریال)",
+    type: "float",
+    name: "amount",
+    format: (v) => v.toLocaleString("fa-IR"),
+  },
+  { columnName: "سررسید", type: "string", name: "payment_due_date" },
+  {
+    columnName: "وضعیت",
+    type: "string",
+    name: "is_paid",
+    format: (v) => (v ? "✓" : "✗"),
+  },
+  {
+    columnName: "پرداخت",
+    type: "button",
+    buttonName: "پرداخت",
+    onClick: (ins) => !ins.is_paid && openDialog("pay_installment", ins),
   },
 ];
