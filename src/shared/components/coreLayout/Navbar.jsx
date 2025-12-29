@@ -3,27 +3,62 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
-import GradientButton from "@/shared/components/ui/Button";
+import { usePathname, useRouter } from "next/navigation";
 import { Home, Book, Info, Phone, CheckCircle } from "lucide-react";
+import axios from "axios";
+import { API_CORE_URL } from "@/lib/api";
+import GradientButton from "../ui/Button";
 
 export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const hiddenRoutes = ["/auth", "/dashboard", "/admin"];
+  const hiddenRoutes = ["/auth", "/dashboard", "/dashboardAdmin"];
+
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 80);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 80);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  
-  if (hiddenRoutes.some((route) => pathname.startsWith(route))) {
-    return null;
-  }
+
+  useEffect(() => {
+    // بررسی وضعیت کاربر
+    const checkAuthStatus = async () => {
+      setIsLoading(true);
+      try {
+        const response = await axios.get(`${API_CORE_URL}auth/profile/`, {
+          withCredentials: true, // کوکی HttpOnly
+          timeout: 5000,
+        });
+        setUser(response.data.user);
+      } catch (error) {
+        setUser(null);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    checkAuthStatus();
+  }, []);
+
+  const handleDashboardRedirect = () => {
+    if (!user) {
+      router.push("/auth");
+      return;
+    }
+    const role = user.role;
+    if (role === "admin") router.push("/dashboardAdmin");
+    else if (role === "student") router.push("/dashboard");
+    else if (role === "customer" && (!user.first_name || !user.last_name))
+      router.push("/auth");
+    else if (role === "customer") router.push("/");
+    else router.push("/auth");
+  };
+
+  if (hiddenRoutes.some((route) => pathname.startsWith(route))) return null;
 
   const navLinks = [
     { href: "/", label: "خانه" },
@@ -93,23 +128,21 @@ export default function Navbar() {
           return (
             <Link key={link.href} href={link.href} className="relative group">
               {link.label}
-              {/* خط انیمیشن */}
               <span
-                className={`
-                  absolute left-0 -bottom-1 h-[2px] bg-gradient-to-r from-purple-400 via-pink-500 to-red-500
-                  transition-all duration-300
-                  ${isActive ? "w-full" : "w-0 group-hover:w-full"}
-                `}
+                className={`absolute left-0 -bottom-1 h-[2px] bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 transition-all duration-300 ${
+                  isActive ? "w-full" : "w-0 group-hover:w-full"
+                }`}
               />
             </Link>
           );
         })}
       </div>
 
+      {/* دکمه ورود / پروفایل */}
       <div className="flex flex-1 justify-end">
         <GradientButton
-          title="ورود / ثبت نام"
-          href="/auth"
+          title={user ? "پروفایل" : "ورود / ثبت نام"}
+          onClick={handleDashboardRedirect}
           gradient={`${
             pathname === "/"
               ? "bg-gradient-to-r from-[var(--secondary)] to-[var(--secondary)]"

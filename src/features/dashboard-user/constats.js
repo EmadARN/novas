@@ -8,6 +8,7 @@ import {
   PenTool,
   Wallet,
 } from "lucide-react";
+import { DollarSign, CreditCard, Receipt } from "lucide-react";
 
 export const examInit = [
   {
@@ -93,5 +94,4 @@ export const menuItemsList = [
     have_child: false,
   },
 ];
-
 
