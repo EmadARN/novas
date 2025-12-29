@@ -51,23 +51,6 @@ export default function useCheckOtp(phoneNumber, otpLength = 6) {
     }
   };
 
-  // const handleOtpSubmit = async (e, onNextStep) => {
-  //   e.preventDefault();
-  //   const otp = otpRefs.current.map((i) => (i ? i.value : "")).join("");
-  //   if (otp.length !== otpLength) {
-  //     setOtpError("Please enter all digits");
-  //     return;
-  //   }
-
-  //   try {
-  //     await verifyOtp(phoneNumber, otp); // API call
-  //     onNextStep(); // move to personal info step
-  //   } catch (err) {
-  //     setOtpError(err || "Incorrect code. Please try again.");
-  //     otpRefs.current.forEach((i) => i && (i.value = ""));
-  //     otpRefs.current[0]?.focus();
-  //   }
-  // };
   const handleOtpSubmit = async (e, onNextStep) => {
     e.preventDefault();
     const otp = otpRefs.current.map((i) => (i ? i.value : "")).join("");
@@ -94,9 +77,6 @@ export default function useCheckOtp(phoneNumber, otpLength = 6) {
       } else {
         router.push("/auth");
       }
-
-      // حذف onNextStep() چون الان هدایت با router.push انجام شده
-      // onNextStep();
     } catch (err) {
       setOtpError(
         err?.response?.data?.error ||
