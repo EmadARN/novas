@@ -21,9 +21,11 @@ export const verifyOtp = async (phone_number, code) => {
       phone_number,
       code,
     });
-    return response.data;
-  } catch (error) {
-    throw error.response?.data?.error || "Failed to verify OTP";
+    console.log(response.data, "response");
+
+    return response.data; // فقط موفقیت یا پیام backend
+  } catch (err) {
+    throw err.response?.data?.error || "Failed to verify OTP";
   }
 };
 
@@ -53,5 +55,14 @@ export const register = async (formData) => {
     console.log(error, "registerErr");
 
     throw error.response?.data?.error || "Failed to register";
+  }
+};
+
+export const getProfile = async () => {
+  try {
+    const response = await coreHttp.get("auth/profile/");
+    return response.data.user;
+  } catch (err) {
+    throw err?.response?.data?.error || "خطا در دریافت اطلاعات کاربر";
   }
 };

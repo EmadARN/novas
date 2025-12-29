@@ -1,6 +1,7 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
-import { verifyOtp, sendOtp } from "../services/auth.api";
+import { useState, useRef, useEffect, use } from "react";
+import { verifyOtp, sendOtp, getProfile } from "../services/auth.api";
+import { useRouter } from "next/navigation";
 
 export default function useCheckOtp(phoneNumber, otpLength = 6) {
   const [otpError, setOtpError] = useState("");
@@ -8,7 +9,7 @@ export default function useCheckOtp(phoneNumber, otpLength = 6) {
   const [showResend, setShowResend] = useState(false);
   const [toast, setToast] = useState(null);
   const otpRefs = useRef([]);
-
+  const router = useRouter();
   useEffect(() => {
     if (otpRefs.current.length === 0)
       otpRefs.current = Array(otpLength).fill(null);
@@ -50,19 +51,58 @@ export default function useCheckOtp(phoneNumber, otpLength = 6) {
     }
   };
 
+  // const handleOtpSubmit = async (e, onNextStep) => {
+  //   e.preventDefault();
+  //   const otp = otpRefs.current.map((i) => (i ? i.value : "")).join("");
+  //   if (otp.length !== otpLength) {
+  //     setOtpError("Please enter all digits");
+  //     return;
+  //   }
+
+  //   try {
+  //     await verifyOtp(phoneNumber, otp); // API call
+  //     onNextStep(); // move to personal info step
+  //   } catch (err) {
+  //     setOtpError(err || "Incorrect code. Please try again.");
+  //     otpRefs.current.forEach((i) => i && (i.value = ""));
+  //     otpRefs.current[0]?.focus();
+  //   }
+  // };
   const handleOtpSubmit = async (e, onNextStep) => {
     e.preventDefault();
     const otp = otpRefs.current.map((i) => (i ? i.value : "")).join("");
     if (otp.length !== otpLength) {
-      setOtpError("Please enter all digits");
+      setOtpError("لطفاً همه ارقام را وارد کنید");
       return;
     }
 
     try {
-      await verifyOtp(phoneNumber, otp); // API call
-      onNextStep(); // move to personal info step
+      const response = await verifyOtp(phoneNumber, otp);
+      console.log(response, "user");
+
+      if (!response) {
+        setOtpError("خطا در دریافت اطلاعات کاربر");
+        return;
+      }
+
+      // هدایت کاربر بسته به نقش و اطلاعات
+      if (response.user.role === "admin") {
+        router.push("/dashboardAdmin");
+      } else if (response.student_information) {
+        if (response.user.role === "student") router.push("/dashboard");
+        else if (response.user.role === "customer") router.push("/");
+      } else {
+        router.push("/auth");
+      }
+
+      // حذف onNextStep() چون الان هدایت با router.push انجام شده
+      // onNextStep();
     } catch (err) {
-      setOtpError(err || "Incorrect code. Please try again.");
+      setOtpError(
+        err?.response?.data?.error ||
+          err?.message ||
+          "کد اشتباه است. دوباره امتحان کنید."
+      );
       otpRefs.current.forEach((i) => i && (i.value = ""));
       otpRefs.current[0]?.focus();
     }

@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import Link from "next/link";
 import BtnLoader from "./BtnLoader";
@@ -7,11 +6,12 @@ import BtnLoader from "./BtnLoader";
 const GradientButton = ({
   href,
   title,
-  className = "",
+  onClick,
   type = "button",
   loading = false,
   textColor = "text-white",
   gradient = "bg-gradient-to-r from-[var(--primary)] to-[var(--accent)]",
+  className = "",
 }) => {
   const baseClasses = `
     inline-flex
@@ -33,12 +33,21 @@ const GradientButton = ({
 
   const content = loading ? <BtnLoader /> : title;
 
-  return href ? (
-    <Link href={href} className={baseClasses}>
-      {content}
-    </Link>
-  ) : (
-    <button type={type} className={baseClasses} disabled={loading}>
+  if (href) {
+    return (
+      <Link href={href} className={baseClasses}>
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <button
+      type={type}
+      onClick={onClick}
+      className={baseClasses}
+      disabled={loading}
+    >
       {content}
     </button>
   );

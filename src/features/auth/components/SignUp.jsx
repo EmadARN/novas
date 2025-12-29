@@ -3,7 +3,6 @@
 import { useAtom } from "jotai";
 import { useEffect, useState } from "react";
 import SendOtp from "../components/SendOtp";
-import CheckOtp from "../components/CheckOtp";
 import UserVerify from "./UserVerify";
 import RegisterStep1 from "./registerForms/RegisterStep1";
 import RegisterStep2 from "./registerForms/RegisterStep2";
@@ -14,6 +13,7 @@ import useCheckOtp from "../hooks/useCheckOtp";
 import { register } from "../services/auth.api";
 import { cities_all, provinces } from "../constants";
 import BtnLoader from "@/shared/components/ui/BtnLoader";
+import CheckOtp from "./CheckOtp";
 
 const defaultConfig = {
   step1_title: "ورود شماره موبایل",
