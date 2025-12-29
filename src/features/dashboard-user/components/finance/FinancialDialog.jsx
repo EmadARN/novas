@@ -1,7 +1,7 @@
 "use client";
 
+import Dialog from "@/shared/components/Dialog";
 import React from "react";
-import Dialog from "../../Dialog";
 
 const FinancialDialog = ({
   dialogType,
