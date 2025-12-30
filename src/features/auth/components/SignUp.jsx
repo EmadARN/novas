@@ -24,12 +24,10 @@ const defaultConfig = {
 
 export default function SignUp() {
   const [currentStep, setCurrentStep] = useAtom(signUpStepAtom);
+  const [mounted, setMounted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [filteredCities, setFilteredCities] = useState(cities_all);
 
-  /* =======================
-      فرم دیتا اصلی (اصلاح‌شده)
-  ======================= */
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
@@ -45,15 +43,23 @@ export default function SignUp() {
     address: "",
   });
 
-  /* ======================= */
+  /* ======================= Mount Guard ======================= */
   useEffect(() => {
+    setMounted(true);
+
     const savedStep = localStorage.getItem("signUpStep");
-    if (!savedStep) setCurrentStep(1);
+    if (savedStep) {
+      setCurrentStep(Number(savedStep));
+    } else {
+      setCurrentStep(1);
+    }
   }, [setCurrentStep]);
 
   useEffect(() => {
-    localStorage.setItem("signUpStep", currentStep.toString());
-  }, [currentStep]);
+    if (mounted) {
+      localStorage.setItem("signUpStep", currentStep.toString());
+    }
+  }, [currentStep, mounted]);
 
   /* ======================= OTP ======================= */
   const {
@@ -104,6 +110,9 @@ export default function SignUp() {
     }
   };
 
+  /* ======================= ⛔ جلوگیری از Hydration ======================= */
+  if (!mounted) return null;
+
   /* ======================= UI ======================= */
   return (
     <div className="min-h-screen flex items-center justify-center py-8">
@@ -125,6 +134,7 @@ export default function SignUp() {
             </div>
           </div>
         )}
+
         {currentStep === 1 && (
           <SendOtp
             onSubmit={(e) => handlePhoneSubmit(e, handleNext)}
@@ -132,6 +142,7 @@ export default function SignUp() {
             defaultConfig={defaultConfig}
           />
         )}
+
         {currentStep === 2 && (
           <CheckOtp
             maskedPhone={phoneNumber}
@@ -148,6 +159,7 @@ export default function SignUp() {
             defaultConfig={defaultConfig}
           />
         )}
+
         {currentStep === 3 && (
           <RegisterStep1
             formData={formData}
@@ -155,6 +167,7 @@ export default function SignUp() {
             setFormData={setFormData}
           />
         )}
+
         {currentStep === 4 && (
           <RegisterStep2
             formData={formData}
@@ -164,14 +177,16 @@ export default function SignUp() {
             setFilteredCities={setFilteredCities}
           />
         )}
+
         {currentStep === 5 && (
           <RegisterStep3 formData={formData} onChange={handleChange} />
         )}
+
         <div className="flex justify-between mt-8 gap-3">
           {currentStep >= 4 && currentStep < 6 && (
             <button
               onClick={handlePrev}
-              className="px-5 py-3 bg-gray-200 rounded-lg cursor-pointer"
+              className="px-5 py-3 bg-gray-200 rounded-lg"
             >
               مرحله قبل
             </button>
@@ -180,7 +195,7 @@ export default function SignUp() {
           {currentStep >= 3 && currentStep < 5 ? (
             <button
               onClick={handleNext}
-              className="px-5 py-3 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] text-white rounded-lg cursor-pointer "
+              className="px-5 py-3 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] text-white rounded-lg"
             >
               مرحله بعد
             </button>
@@ -189,15 +204,16 @@ export default function SignUp() {
               <button
                 onClick={handleSubmit}
                 disabled={isSubmitting}
-                className="px-5 py-3 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] text-white rounded-lg cursor-pointer"
+                className="px-5 py-3 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] text-white rounded-lg"
               >
                 {isSubmitting ? <BtnLoader /> : "ثبت نهایی"}
               </button>
             )
           )}
         </div>
+
         {currentStep === 6 && (
-          <div className="w-full min-w-sm bg-light rounded-3xl  p-8">
+          <div className="w-full min-w-sm bg-light rounded-3xl p-8">
             <UserVerify />
           </div>
         )}

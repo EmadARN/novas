@@ -1,6 +1,6 @@
 "use client";
 import { useState, useRef, useEffect, use } from "react";
-import { verifyOtp, sendOtp, getProfile } from "../services/auth.api";
+import { verifyOtp, sendOtp } from "../services/auth.api";
 import { useRouter } from "next/navigation";
 
 export default function useCheckOtp(phoneNumber, otpLength = 6) {
