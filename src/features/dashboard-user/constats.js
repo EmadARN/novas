@@ -199,3 +199,33 @@ export const installmentTableHead = (openDialog) => [
     onClick: (ins) => !ins.is_paid && openDialog("pay_installment", ins),
   },
 ];
+
+
+
+
+
+export const coursesColumns = [
+  {
+    columnName: "عنوان",
+    type: "string",
+    name: "title",
+  },
+  {
+    columnName: "قیمت",
+    type: "float",
+    name: "current_price",
+    render: (v) => `${v?.toLocaleString("fa-IR")} ریال`,
+  },
+  {
+    columnName: "مدت",
+    type: "string",
+    name: "total_hours",
+    render: (v) => `${v} ساعت`,
+  },
+  {
+    columnName: "وضعیت",
+    type: "string",
+    name: "is_completed",
+    render: (v) => (v ? "تکمیل شده" : "در حال انجام"),
+  },
+];

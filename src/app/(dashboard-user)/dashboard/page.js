@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import CoursesTable from "@/features/dashboard-user/components/DeskPage/CoursesTable";
 import DashboardCards from "@/features/dashboard-user/components/DeskPage/DashboardCards";
-import { cards } from "@/features/dashboard-user/constats";
 import DashboardCharts from "@/features/dashboard-user/components/DeskPage/DashboardCharts";
 import {
   getCourses,
@@ -13,6 +12,9 @@ import {
   getSubscriptions,
   getTransactions,
 } from "@/features/dashboard-user/services/finance.api";
+import { toast } from "react-toastify";
+import { BookOpen, ClipboardList, CreditCard, Book } from "lucide-react";
+import { coursesColumns } from "@/features/dashboard-user/constats";
 
 const Dashboard = () => {
   const [courses, setCourses] = useState([]);
@@ -39,11 +41,11 @@ const Dashboard = () => {
           getTransactions(),
           getTextBooks(),
         ]);
-        setCourses(coursesData);
-        setExams(examsData);
-        setSubscriptions(subscriptionsData);
-        setTransactions(transactionsData);
-        setTextBooks(textbooksData);
+        setCourses(coursesData ?? []);
+        setExams(examsData ?? []);
+        setSubscriptions(subscriptionsData ?? []);
+        setTransactions(transactionsData ?? []);
+        setTextBooks(textbooksData ?? []);
       } catch (error) {
         console.error(error);
         toast.error("خطا در دریافت اطلاعات");
@@ -58,63 +60,77 @@ const Dashboard = () => {
     {
       title: "دوره‌ها",
       count: courses.length,
-      icon: "📚",
-      color: "from-green-500 to-green-600",
-      onClick: () =>
-        openPreview({
-          type: "courses",
-          count: courses.length,
-          details: "کل دوره‌های شما",
-        }),
+      icon: BookOpen,
+      accent: "green",
     },
     {
       title: "آزمون‌ها",
-      count: exams.length,
-      icon: "📝",
-      color: "from-purple-500 to-purple-600",
-      onClick: () =>
-        openPreview({
-          type: "exams",
-          count: exams.length,
-          details: "کل آزمون‌های شما",
-        }),
+      count: exams?.length ?? 0,
+      icon: ClipboardList,
+      accent: "purple",
     },
     {
       title: "اشتراک‌ها",
       count: subscriptions.length,
-      icon: "🎟️",
-      color: "from-yellow-400 to-yellow-500",
-      onClick: () =>
-        openPreview({
-          type: "subscriptions",
-          count: subscriptions.length,
-          details: "اشتراک‌های فعال شما",
-        }),
+      icon: CreditCard,
+      accent: "amber",
     },
     {
       title: "کتاب‌ها",
       count: textbooks.length,
-      icon: "📖",
-      color: "from-blue-500 to-blue-600",
-      onClick: () =>
-        openPreview({
-          type: "textbooks",
-          count: textbooks.length,
-          details: "کتاب‌های شما",
-        }),
+      icon: Book,
+      accent: "blue",
     },
   ];
+
+  const spendingData = transactions.reduce((acc, t) => {
+    const date = new Date(t.create_at).toLocaleDateString("fa-IR");
+    acc[date] = (acc[date] || 0) + t.amount;
+    return acc;
+  }, {});
+
+  const spendingChartData = {
+    labels: Object.keys(spendingData),
+    datasets: [
+      {
+        label: "هزینه (ریال)",
+        data: Object.values(spendingData),
+        borderColor: "#4ade80",
+        backgroundColor: "rgba(74, 222, 128, 0.2)",
+        tension: 0.4,
+        fill: true,
+      },
+    ],
+  };
+
+  const subscriptionStatus = subscriptions.reduce(
+    (acc, sub) => {
+      const status = sub.is_active ? "فعال" : "منقضی";
+      acc[status] = (acc[status] || 0) + 1;
+      return acc;
+    },
+    { فعال: 0, منقضی: 0 }
+  );
+  const subscriptionChartData = {
+    labels: ["فعال", "منقضی"],
+    datasets: [
+      {
+        data: [subscriptionStatus.فعال, subscriptionStatus.منقضی],
+        backgroundColor: ["#10B981", "#EF4444"],
+      },
+    ],
+  };
 
   return (
     <div className="container mx-autospace-y-8 p-6">
       <DashboardCards cards={cardData} />
 
       <DashboardCharts
-        spendingData={{ labels: [], datasets: [] }}
-        subscriptionData={{ labels: [], datasets: [] }}
+        spendingData={spendingChartData}
+        subscriptionData={subscriptionChartData}
       />
 
-      <CoursesTable columns={[]} data={[]} />
+      <CoursesTable columns={coursesColumns} data={courses} />
     </div>
   );
 };
