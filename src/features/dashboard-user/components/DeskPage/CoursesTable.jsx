@@ -1,4 +1,4 @@
-import UserTable from "./UserTable";
+import UserTable from "./userTable/UserTable";
 
 const CoursesTable = ({ columns, data }) => (
   <div className="bg-white rounded-xl shadow  p-6">
