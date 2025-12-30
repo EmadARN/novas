@@ -28,7 +28,7 @@ export default function PackageCard({
     ));
 
   const href = is_admin
-    ? `/admin-dashboard/course/${course.id}`
+    ? `/dashboardAdmin/course/${course.id}`
     : `/courses/detail/${course.id}`;
 
   /* -------------------- render -------------------- */

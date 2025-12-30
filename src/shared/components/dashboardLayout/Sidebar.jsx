@@ -29,7 +29,7 @@ export default function Sidebar({
 
   const renderMenuItems = () =>
     menu_items_list.map((item, idx) => (
-      <li key={idx}>
+      <li key={idx} className="direction-rtl">
         <Link href={item.url}>
           <button
             onClick={() => toggleChild(idx)}
@@ -56,7 +56,7 @@ export default function Sidebar({
         {item.have_child && openChild === idx && (
           <ul className="mr-6 mt-2 space-y-1">
             {item.children.map((child, childIdx) => (
-              <li key={childIdx}>
+              <li key={childIdx} className="direction-rtl">
                 <Link href={child.url}>
                   <button
                     className={`flex items-center w-full px-4 py-2 rounded-xl transition-all cursor-pointer ${
@@ -83,7 +83,7 @@ export default function Sidebar({
       {isMobile && (
         <button
           onClick={onToggleSidebar}
-          className="fixed top-4 left-3 text-gray-300 text-lg"
+          className="fixed top-4 left-3 text-gray-300 text-lg cursor-pointer"
         >
           <FaTimes />
         </button>
@@ -91,7 +91,7 @@ export default function Sidebar({
 
       <div
         className={`flex items-center justify-center ${
-          isMobile ? "h-24 mt-12" : "h-28"
+          isMobile ? "h-24 mt-12" : "h-22"
         } border-b border-gray-600`}
       >
         <Link href="/">
@@ -99,7 +99,14 @@ export default function Sidebar({
         </Link>
       </div>
 
-      <ul className="mt-4 flex flex-col space-y-1 px-2 flex-grow">
+      <ul
+        className="
+    mt-4 flex flex-col space-y-1 px-2 flex-grow
+    overflow-y-auto
+    direction-ltr
+    scrollbar-custom
+  "
+      >
         {renderMenuItems()}
       </ul>
 
@@ -110,7 +117,7 @@ export default function Sidebar({
       >
         <button
           onClick={handleLogout}
-          className="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl bg-red-800 hover:bg-red-700 text-white font-bold transition cursor-pointer"
+          className="flex items-center justify-center gap-2 w-full px-4 py-2 rounded-xl bg-red-800 hover:bg-red-700 text-white font-bold transition cursor-pointer"
         >
           <FaSignOutAlt />
           خروج
@@ -126,7 +133,7 @@ export default function Sidebar({
       )}
 
       {/* Desktop Sidebar */}
-      <div className="hidden lg:flex absolute top-0 right-0 h-full w-full z-50 flex-col bg-gradient-to-b from-gray-800 via-gray-700 to-gray-800 shadow-xl">
+      <div className="hidden  lg:flex absolute top-0 right-0 h-full w-full z-50 flex-col bg-gradient-to-b from-gray-800 via-gray-700 to-gray-800 shadow-xl">
         <SidebarContent />
       </div>
 

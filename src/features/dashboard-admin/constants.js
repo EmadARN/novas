@@ -13,7 +13,7 @@ import {
 export const menuItemsList = [
   {
     name: "میزکار",
-    url: "/admin-dashboard",
+    url: "/dashboardAdmin",
     icon: <Home size={20} />,
     have_child: false,
   },
@@ -25,19 +25,19 @@ export const menuItemsList = [
     children: [
       {
         name: "کاربران",
-        url: "/admin-dashboard/users",
+        url: "/dashboardAdmin/users",
         icon: <Users size={18} />,
         have_child: false,
       },
       {
         name: "اطلاعات دانش آموزان",
-        url: "/admin-dashboard/student-information",
+        url: "/dashboardAdmin/student-information",
         icon: <Users size={18} />,
         have_child: false,
       },
       {
         name: "اساتید",
-        url: "/admin-dashboard/teacher",
+        url: "/dashboardAdmin/teacher",
         icon: <GraduationCap size={18} />,
         have_child: false,
       },
@@ -51,19 +51,19 @@ export const menuItemsList = [
     children: [
       {
         name: "دوره ها",
-        url: "/admin-dashboard/course",
+        url: "/dashboardAdmin/course",
         icon: <BookOpen size={18} />,
         have_child: false,
       },
       {
         name: "دسته بندی دوره ها",
-        url: "/admin-dashboard/category",
+        url: "/dashboardAdmin/category",
         icon: <BookOpen size={18} />,
         have_child: false,
       },
       {
         name: "جزوه ها",
-        url: "/admin-dashboard/textbook",
+        url: "/dashboardAdmin/textbook",
         icon: <FileText size={18} />,
         have_child: false,
       },
@@ -77,13 +77,13 @@ export const menuItemsList = [
     children: [
       {
         name: "آزمون",
-        url: "/admin-dashboard/exam",
+        url: "/dashboardAdmin/exam",
         icon: <ClipboardList size={18} />,
         have_child: false,
       },
       {
         name: "نتایج آزمون",
-        url: "/admin-dashboard/exam-session",
+        url: "/dashboardAdmin/exam-session",
         icon: <ClipboardList size={18} />,
         have_child: false,
       },
@@ -91,25 +91,25 @@ export const menuItemsList = [
   },
   {
     name: "اشتراک کاربران",
-    url: "/admin-dashboard/subscription",
+    url: "/dashboardAdmin/subscription",
     icon: <Wallet size={20} />,
     have_child: false,
   },
   {
     name: "تراکنش های مالی",
-    url: "/admin-dashboard/transaction",
+    url: "/dashboardAdmin/transaction",
     icon: <Wallet size={20} />,
     have_child: false,
   },
   {
     name: "سوالات متداول",
-    url: "/admin-dashboard/faq",
+    url: "/dashboardAdmin/faq",
     icon: <HelpCircle size={20} />,
     have_child: false,
   },
   {
     name: "نظرات",
-    url: "/admin-dashboard/comment",
+    url: "/dashboardAdmin/comment",
     icon: <MessageCircle size={20} />,
     have_child: false,
   },

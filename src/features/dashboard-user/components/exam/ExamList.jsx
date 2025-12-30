@@ -27,7 +27,7 @@ const ExamList = ({ exams, is_admin }) => {
         <Link
           href={
             is_admin
-              ? `/admin-dashboard/exam/${exam.id}`
+              ? `/dashboardAdmin/exam/${exam.id}`
               : `/exams/detail/${exam.id}`
           }
           key={exam.id}
@@ -77,7 +77,7 @@ const ExamList = ({ exams, is_admin }) => {
               <Link
                 href={
                   is_admin
-                    ? `/admin-dashboard/exam/${exam.id}`
+                    ? `/dashboardAdmin/exam/${exam.id}`
                     : `/exams/${exam.id}`
                 }
                 className="theme-btn-primary w-full text-center mt-auto"
