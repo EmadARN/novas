@@ -58,11 +58,3 @@ export const register = async (formData) => {
   }
 };
 
-export const getProfile = async () => {
-  try {
-    const response = await coreHttp.get("auth/profile/");
-    return response.data.user;
-  } catch (err) {
-    throw err?.response?.data?.error || "خطا در دریافت اطلاعات کاربر";
-  }
-};

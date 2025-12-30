@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import axios from "axios";
 import { FaBars, FaUserCircle } from "react-icons/fa";
 import { API_CORE_URL } from "@/lib/api";
+import { getProfile } from "@/shared/service";
 
 // --------------------
 // تابع خوش‌آمدگویی بر اساس ساعت
@@ -38,13 +39,7 @@ export default function DashboardHeader({ is_side_bar_open, onToggleSidebar }) {
       const accessToken = localStorage.getItem("access_token");
 
       try {
-        const response = await axios.get(`${API_CORE_URL}auth/profile/`, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-            "Content-Type": "application/json",
-          },
-          timeout: 5000,
-        });
+        const response = await getProfile()
 
         setUser(response.data);
       } catch (error) {
